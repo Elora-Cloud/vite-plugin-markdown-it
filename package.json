@@ -1,0 +1,79 @@
+{
+  "name": "vite-plugin-markdown-it",
+  "version": "0.0.1-alpha.3",
+  "description": "this is base vite parser markdown for vitepress",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "theme.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./theme": {
+      "import": "./dist/theme/index.mjs",
+      "require": "./dist/theme/index.js",
+      "types": "./dist/theme.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "scripts": {
+    "test": "vitest -u parser.test",
+    "dev:example": "vite dev example",
+    "build:example": "vite build example",
+    "preview:example": "vite preview example",
+    "release": "bumpp",
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "loader-utils": "^2.0.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-class": "^1.0.0",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-emoji": "^2.0.2",
+    "uniqid": "^5.2.0"
+  },
+  "devDependencies": {
+    "@mistjs/eslint-config-vue": "^0.0.3",
+    "@mistjs/tsconfig-vue": "^0.0.3",
+    "@toycode/markdown-it-class": "^1.2.4",
+    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-container": "^2.0.5",
+    "@types/node": "^18.11.11",
+    "@types/uniqid": "^5.2.0",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "bumpp": "^8.2.1",
+    "changelogen": "^0.4.0",
+    "element-plus": "^2.2.21",
+    "eslint": "^8.29.0",
+    "highlight.js": "^11.7.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3",
+    "unplugin-vue-components": "^0.22.9",
+    "vite": "^3.2.5",
+    "vite-plugin-inspect": "^0.7.9",
+    "vitest": "^0.25.5",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0 || ^4.0.0",
+    "vitepress": "^1.0.0-alpha.20"
+  }
+}
