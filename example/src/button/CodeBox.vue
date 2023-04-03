@@ -1,45 +1,39 @@
-<script setup>
-import { computed,setup } from 'vue'
+/*
+* @Author: mumu
+* @Description: 代码模块 入口
+* @Date: 2023-04-03 10:42:53
+* @LastEditTime: 2023-04-03 09:57:27
+*/
+<script setup name='code-box'>
+import { computed, nextTick, ref, useSlots } from 'vue'
+const showText = ref('显示代码')
+const relHeight = ref(0)
+const isShow = ref(false)
+const height = ref('auto')
+const explainSlotState = ref(false)
+if (useSlots().explain)
+  explainSlotState.value = true
+
+const code = ref()
+nextTick(() => {
+  relHeight.value = code.value.getBoundingClientRect().height
+  height.value = '0px'
+})
 
 const getCodeStyle = computed(() => {
-  return this.codeStyle
+  return codeStyle
 })
 function showCode() {
-  if (this.isShow) {
-    this.isShow = false
-    this.height = '0px'
-    this.showText = '显示代码'
+  if (isShow.value) {
+    isShow.value = false
+    height.value = '0px'
+    showText.value = '显示代码'
   }
   else {
-    this.isShow = true
-    this.height = `${this.relHeight}px`
-    this.showText = '隐藏代码'
+    isShow.value = true
+    height.value = `${relHeight.value}px`
+    showText.value = '隐藏代码'
   }
-}
-
-
-export default {
-  name: 'code-box',
-  data() {
-    return {
-      showText: '显示代码',
-      relHeight: 0,
-      isShow: false,
-      height: 'auto',
-      explainSlotState: false,
-    }
-  },
-  created() {
-    console.log(this.$slots.demo)
-    if (this.$slots.explain)
-      this.explainSlotState = true
-
-    this.$nextTick(() => {
-      this.relHeight = this.$refs.code.getBoundingClientRect().height
-      this.height = '0px'
-    })
-  },
-
 }
 </script>
 
@@ -67,7 +61,7 @@ export default {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .code-box {
   border: var(--as-border-base);
   &:hover {

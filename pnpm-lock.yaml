@@ -20,6 +20,7 @@ specifiers:
   markdown-it-class: ^1.0.0
   markdown-it-container: ^3.0.0
   markdown-it-emoji: ^2.0.2
+  sass: ^1.56.0
   tsup: ^6.5.0
   typescript: ^4.9.3
   uniqid: ^5.2.0
@@ -53,12 +54,13 @@ devDependencies:
   element-plus: 2.3.2_vue@3.2.45
   eslint: 8.29.0
   highlight.js: 11.7.0
+  sass: 1.60.0
   tsup: 6.5.0_typescript@4.9.3
   typescript: 4.9.3
   unplugin-vue-components: 0.22.12_vue@3.2.45
-  vite: 3.2.5_@types+node@18.11.11
+  vite: 3.2.5_ac6eahbpi2pmy6o5aidpxbzdc4
   vite-plugin-inspect: 0.7.9_vite@3.2.5
-  vitest: 0.25.5
+  vitest: 0.25.5_sass@1.60.0
   vue: 3.2.45
   vue-router: 4.1.6_vue@3.2.45
 
@@ -536,7 +538,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.5_@types+node@18.11.11
+      vite: 3.2.5_ac6eahbpi2pmy6o5aidpxbzdc4
       vue: 3.2.45
     dev: true
 
@@ -2111,6 +2113,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immutable/4.3.0:
+    resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==}
+    dev: true
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -3106,6 +3112,16 @@ packages:
       regexp-tree: 0.1.24
     dev: true
 
+  /sass/1.60.0:
+    resolution: {integrity: sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.0
+      source-map-js: 1.0.2
+    dev: true
+
   /scule/0.3.2:
     resolution: {integrity: sha512-zIvPdjOH8fv8CgrPT5eqtxHQXmPNnV/vHJYffZhE43KZkvULvpCTvOt1HPlFaCZx287INL9qaqrZg34e8NgI4g==}
     dev: true
@@ -3571,13 +3587,13 @@ packages:
       kolorist: 1.6.0
       sirv: 2.0.2
       ufo: 1.0.1
-      vite: 3.2.5_@types+node@18.11.11
+      vite: 3.2.5_ac6eahbpi2pmy6o5aidpxbzdc4
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: true
 
-  /vite/3.2.5_@types+node@18.11.11:
+  /vite/3.2.5_ac6eahbpi2pmy6o5aidpxbzdc4:
     resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3607,11 +3623,12 @@ packages:
       postcss: 8.4.19
       resolve: 1.22.1
       rollup: 2.79.1
+      sass: 1.60.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.5:
+  /vitest/0.25.5_sass@1.60.0:
     resolution: {integrity: sha512-lFKSTZV+AjuL44/yNC0aDPKTiasYSqOQ97Gg2G4P2LnjyzQ21ZUs4rQOscHK3lrSnVuir3+1QavHzbDgH4tWQA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -3646,7 +3663,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.5_@types+node@18.11.11
+      vite: 3.2.5_ac6eahbpi2pmy6o5aidpxbzdc4
     transitivePeerDependencies:
       - less
       - sass

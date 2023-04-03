@@ -34,7 +34,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.4.0",
     "loader-utils": "^2.0.0",
     "markdown-it": "^13.0.1",
     "markdown-it-class": "^1.0.0",
@@ -50,6 +49,7 @@
     "@types/markdown-it-container": "^2.0.5",
     "@types/node": "^18.11.11",
     "@types/uniqid": "^5.2.0",
+    "sass": "^1.56.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "bumpp": "^8.2.1",
     "changelogen": "^0.4.0",

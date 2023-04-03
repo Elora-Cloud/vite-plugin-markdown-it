@@ -1,14 +1,13 @@
-<!--
- * @Author: Yang Lin
- * @Description: 简介
- * @Date: 2020-07-18 11:08:31
- * @LastEditTime: 2020-07-25 15:17:03
- * @FilePath: f:\sourcecode\md-vue-loader\example\components\Button.vue
--->
+/*
+* @Author: mumu
+* @Description: Button 入口
+* @Date: 2023-04-03 10:42:53
+* @LastEditTime: 2023-04-03 09:57:27
+*/
 
 <script setup>
-import { computed } from 'vue'
-defineProps({
+import { computed, defineEmits } from 'vue'
+const props = defineProps({
   type: {
     type: String,
     validator: val => [
@@ -26,19 +25,16 @@ defineProps({
     default: false,
   },
 })
+const emit = defineEmits(['click'])
 // 一个计算属性 ref
 const btnClass = computed(() => {
-  const {
-    type,
-    disabled,
-  } = this
   return {
-    [`btn-${type}`]: true,
-    'is-disabled': disabled,
+    [`btn-${props.type}`]: true,
+    'is-disabled': props.disabled,
   }
 })
 function onClick() {
-  this.disabled && this.$emit('click')
+  props.disabled && emit('click')
 }
 </script>
 
