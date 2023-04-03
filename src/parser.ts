@@ -6,10 +6,6 @@ import type { ResolvedConfig } from 'vite'
 import uniqid from 'uniqid'
 import config from './config'
 import type { QueryParamer, UserOptions } from './typing'
-
-// The uniqu name of child component for `vue demo code`
-const uniqComponentName = `Com${uniqid()}Demo`
-
 export class Parser {
   constructor(public readonly config: ResolvedConfig, public readonly options: UserOptions) {
   }
@@ -20,6 +16,27 @@ export class Parser {
   public async parseMarkdown(source: string, id: string, queryParamer: QueryParamer) {
     const resourcePath: string = normalizePath(relative(this.config.root, id))
 
+    // The uniqu name of child component for `vue demo code`
+    const uniqComponentName = `Com${uniqid()}Demo`
+
+    const highlight: (str: string, lang: string, attrs: string) => string = function (str, lang, attrs) {
+      // 代码高亮
+      if (lang && hljs.getLanguage(lang)) {
+        // 使用 highlight.js 实现代码高亮
+        try {
+          return `<pre v-pre class="hljs"><code>${hljs.highlight(str, { language: lang, ignoreIllegals: true }).value}</code></pre>`
+        }
+        catch (error) {
+          console.error(error)
+          console.error(attrs)
+        }
+        return ''
+      }
+      else {
+        // 使用外部默认转义
+        return ''
+      }
+    }
     let filePaths = resourcePath.split('/') // linux
     if (resourcePath.includes('\\'))
       filePaths = resourcePath.split('\\') // window
@@ -47,28 +64,13 @@ export class Parser {
         return vueBlocks[2]
       return ''
     }
+
     // 初始化markdownit
-    // @ts-expect-error
     const md: MarkdownIt = new MarkdownIt({
-      html: true,
-      highlight(str: string, lang: string) {
-        // 代码高亮
-        if (lang && hljs.getLanguage(lang)) {
-          // 使用 highlight.js 实现代码高亮
-          try {
-            return `<pre v-pre class="hljs"><code>${hljs.highlight(lang, str, true).value}</code></pre>`
-          }
-          catch (error) {
-            console.error(error)
-          }
-        }
-        else {
-          // 使用外部默认转义
-          return ''
-        }
-      },
-      breaks: true,
-      linkify: true,
+      html: true, // 在源码中启用 HTML 标签
+      highlight,
+      breaks: true, // 转换段落里的 '\n' 到 <br>。
+      linkify: true, // 将类似 URL 的文本自动转换为链接。
       ...this.options.markdownConfig,
     })
 
