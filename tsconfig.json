@@ -1,3 +1,6 @@
 {
     "extends": "@mistjs/tsconfig-vue",
+    "compilerOptions": {
+        "types": ["unplugin-vue-define-options"]
+    }
 }

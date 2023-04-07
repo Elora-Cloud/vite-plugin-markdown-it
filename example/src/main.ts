@@ -3,7 +3,8 @@ import '../../src/theme'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import CodeBox from './button/CodeBox.vue'
-
+// eslint-disable-next-line import/namespace
+import { val1 } from './mixins/mymixin'
 const router = createRouter({
   history: createWebHistory('/'),
   routes: [
@@ -21,4 +22,5 @@ const router = createRouter({
 const app = createApp(App)
 app.use(router)
 app.component('CodeBox', CodeBox)
+app.mixin(val1)
 app.mount('#app')
