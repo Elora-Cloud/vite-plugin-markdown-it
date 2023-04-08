@@ -8,7 +8,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Button: typeof import('./../src/components/Button.vue')['default']
+    Dict: typeof import('./../src/components/Dict.vue')['default']
+    Dist: typeof import('./../src/components/Dist.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Toast: typeof import('./../src/components/toast/toast.vue')['default']
   }
 }

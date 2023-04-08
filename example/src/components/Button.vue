@@ -6,7 +6,8 @@
 */
 
 <script setup>
-import { computed, defineEmits } from 'vue'
+import { computed, createVNode, defineEmits, getCurrentInstance } from 'vue'
+import Toast from './toast/toast.vue'
 const props = defineProps({
   type: {
     type: String,
@@ -26,6 +27,17 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['click'])
+console.log(createVNode(Toast, { CodeBox: Toast }))
+defineOptions({
+  componentName: 'JeecgDialog',
+})
+
+const { proxy, appContext: { config: { globalProperties } } } = getCurrentInstance()
+
+console.log(getCurrentInstance())
+console.log(proxy)
+console.log(globalProperties)
+
 // 一个计算属性 ref
 const btnClass = computed(() => {
   return {
@@ -46,6 +58,10 @@ function onClick() {
   >
     <slot />
   </button>
+  <div style="height: 200px;width: 300px; background-color: red">
+    <Toast />
+    {{ $t("hello") }}
+  </div>
 </template>
 
 <style lang="scss">
