@@ -28,11 +28,17 @@ export default defineConfig({
 })
 
 ```
+你需要拷贝 example 目录下的文件到你的项目中
 
-同时你还需要导入`style`的主题样式在`main.[t|j]s`文件中。
+同时你还需要导入`style`的主题样式和注册全局vue组件在`main.[t|j]s`文件中。
 
 ```ts
-import "./markdown.scss"
+import CodeBox from './components/code-box.vue'
+import VersionTag from './components/version-tag.vue'
+import "./index.scss"
+
+app.component('CodeBox', CodeBox)
+app.component('VersionTag', VersionTag)
 ```
 
 

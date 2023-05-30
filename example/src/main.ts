@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import CodeBox from './components/CodeBox.vue'
+import CodeBox from './components/code-box.vue'
 import VersionTag from './components/version-tag.vue'
 import './style/index.scss'
 const router = createRouter({

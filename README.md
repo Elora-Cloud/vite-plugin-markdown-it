@@ -28,13 +28,20 @@ export default defineConfig({
 })
 
 ```
+You need to **copy** the files in the example directory to your project
 
-You need to import the `style` theme in your `main.[t|j]s` file.
+You need to import the `style` theme and global vue `component` in your `main.[t|j]s` file.
+
+In `main.[t|j]s`:
 
 ```ts
-import "./markdown.scss"
-```
+import CodeBox from './components/code-box.vue'
+import VersionTag from './components/version-tag.vue'
+import "./index.scss"
+app.component('CodeBox', CodeBox)
+app.component('VersionTag', VersionTag)
 
+```
 
 
 ## TypeScript Config
