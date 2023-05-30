@@ -1,6 +1,6 @@
 # vite-plugin-markdown-it
 
-A use vitePress theme plugin for Vite.
+A use markdown-it theme plugin for Vite.
 
 
 ## Install
@@ -17,10 +17,10 @@ In `vite.config.[t|j]s`:
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VitePluginVitepress from '../src'
+import VitePluginMarkdownIt from 'vite-plugin-markdown-it'
 export default defineConfig({
   plugins: [
-    VitePluginVitepress(),
+    VitePluginMarkdownIt(),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -29,16 +29,12 @@ export default defineConfig({
 
 ```
 
-You need to import the `vitepress` theme in your `main.[t|j]s` file.
+You need to import the `style` theme in your `main.[t|j]s` file.
 
 ```ts
-import "vite-plugin-markdown-it/theme"
+import "./markdown.scss"
 ```
 
-
-## Options
-
-* markdown: `MarkdownOptions` instance, similar to vitepress config [markdown](https://vitepress.vuejs.org/config/app-configs#markdown)
 
 
 ## TypeScript Config

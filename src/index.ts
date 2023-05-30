@@ -1,39 +1,49 @@
 import type { PluginOption } from 'vite'
-import { Parser } from './parser'
 import type { QueryParamer, UserOptions } from './typing'
+import { Parser } from './parser'
 
-const VitePluginMarkdownIt = (_options?: UserOptions): PluginOption => {
-  let parser: Parser
-  const defaultOptions: UserOptions = { containerName: 'demo', prefix: 'vue-a3ui-doc' }
-  const options: UserOptions = { ...defaultOptions, ..._options }
+function dealParamer(id: string): QueryParamer {
   const queryParamer: QueryParamer = {
     fence: false,
+    fileName: id,
+    componentIndex: 0,
   }
+  // 处理import参数
+  queryParamer.fileName = `${id.split('.md')[0]}.md`
+  if (id.includes('?fence')) {
+    queryParamer.fence = true
+    queryParamer.componentIndex = Number(id.split('&componentIndex=')[1])
+  }
+  else {
+    queryParamer.fence = false
+  }
+  return queryParamer
+}
+const VitePluginMarkdownIt = (_options?: UserOptions): PluginOption => {
+  let parser: Parser
+  const defaultOptions: UserOptions = { containerName: 'demo', prefix: 'vue-jeecg-ui-doc' }
+  const options: UserOptions = { ...defaultOptions, ..._options }
+
   return {
     name: 'vite-plugin-markdown-it',
+    enforce: 'pre',
     async configResolved(_config) {
       parser = new Parser(_config, options)
-      await parser.setupRenderer()
+      // await parser.setupRenderer();
+    },
+    load(id, opt) {
+      if (id.includes('.md') && !id.includes('?raw'))
+        return parser.load(id, dealParamer(id))
+
+      return null
     },
     transform(code, id) {
-      // 只对md文件进行解析
-      if (id.includes('.md')) {
-        // 处理import参数
-        if (id.includes('?fence')) {
-          queryParamer.fence = true
-          queryParamer.componentIndex = id.split('&componentIndex=')[1]
-        }
-        else {
-          queryParamer.fence = false
-        }
-        return parser.transform(code, id, queryParamer)
-      }
+      // 只对md文件进行解析, 排除?raw加载文件内容
+      if (id.includes('.md') && !id.includes('?raw') && !id.includes('type=style'))
+        return parser.transform(code, id, dealParamer(id))
+      return null
     },
   }
-}
-
-export {
-  VitePluginMarkdownIt,
 }
 
 export default VitePluginMarkdownIt

@@ -1,6 +1,6 @@
 # vite-plugin-markdown-it
 
-一个实现了vitepress样式的vite插件。
+一个实现了markdown-it样式的vite插件。
 
 
 ## 安装
@@ -17,10 +17,10 @@ npm i -D vite-plugin-markdown-it
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VitePluginVitepress from '../src'
+import VitePluginMarkdownIt from 'vite-plugin-markdown-it'
 export default defineConfig({
   plugins: [
-    VitePluginVitepress(),
+    VitePluginMarkdownIt(),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -29,16 +29,12 @@ export default defineConfig({
 
 ```
 
-同时你还需要导入`vitepress`的主题样式在`main.[t|j]s`文件中。
+同时你还需要导入`style`的主题样式在`main.[t|j]s`文件中。
 
 ```ts
-import "vite-plugin-markdown-it/theme"
+import "./markdown.scss"
 ```
 
-
-## 配合
-
-* markdown: 与vitepress的配置项中的 [markdown](https://vitepress.vuejs.org/config/app-configs#markdown) 相同
 
 
 ## TypeScript配置

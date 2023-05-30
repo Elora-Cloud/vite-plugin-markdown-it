@@ -1,8 +1,11 @@
-import type { Options, PluginSimple, PluginWithOptions, PluginWithParams } from 'markdown-it'
+import type {
+  Options, PluginSimple, PluginWithOptions, PluginWithParams,
+} from 'markdown-it'
 
 export interface QueryParamer {
-  fence: boolean | null | string
-  componentIndex?: boolean | null | string | number
+  fence: boolean
+  componentIndex: number
+  fileName: string
 }
 /**
  * 使用自定义markdownit插件

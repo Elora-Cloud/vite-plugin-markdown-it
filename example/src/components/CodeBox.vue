@@ -4,15 +4,18 @@
 * @Date: 2023-04-03 10:42:53
 * @LastEditTime: 2023-04-03 09:57:27
 */
-<script setup name='code-box'>
-import { computed, nextTick, ref, useSlots } from 'vue'
+
+<script setup lang="ts">
+import { defineOptions, nextTick, ref, useSlots } from 'vue'
+defineOptions({
+  name: 'CodeBox',
+})
 const showText = ref('显示代码')
 const relHeight = ref(0)
 const isShow = ref(false)
 const height = ref('auto')
 const explainSlotState = ref(false)
-if (useSlots().explain)
-  explainSlotState.value = true
+if (useSlots().explain) explainSlotState.value = true
 
 const code = ref()
 nextTick(() => {
@@ -20,9 +23,7 @@ nextTick(() => {
   height.value = '0px'
 })
 
-const getCodeStyle = computed(() => {
-  return codeStyle
-})
+// const getCodeStyle = computed(() => codeStyle);
 function showCode() {
   if (isShow.value) {
     isShow.value = false
@@ -63,9 +64,9 @@ function showCode() {
 
 <style lang="scss" scoped>
 .code-box {
-  border: var(--as-border-base);
+  border: var(--jeecg-border-base);
   &:hover {
-    box-shadow: 0 0 10px 0 var(--as-border-color-base);
+    box-shadow: 0 0 10px 0 var(--jeecg-border-color-base);
   }
   & > .demo {
     position: relative;
@@ -78,7 +79,7 @@ function showCode() {
     transition: height 0.2s;
     /* border: 1px dotted #d8d8d8; */
     border-bottom-width: 0;
-    background-color: var(--as-component-bg-color);
+    background-color: var(--jeecg-component-bg-color);
     & > .code {
       margin: 10px;
       pre {
@@ -126,7 +127,7 @@ function showCode() {
     height: 40px;
     line-height: 40px;
     border-top: 1px dotted #d8d8d8;
-    background-color: var(--as-component-bg-color);
+    background-color: var(--jeecg-component-bg-color);
     text-align: center;
     color: #d8d8d8;
     cursor: pointer;

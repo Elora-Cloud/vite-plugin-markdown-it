@@ -1,25 +1,41 @@
 import { relative } from 'path'
+import fs from 'fs'
 import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
-import { normalizePath } from 'vite'
 import type { ResolvedConfig } from 'vite'
+import { normalizePath } from 'vite'
 import uniqid from 'uniqid'
 import config from './config'
 import type { QueryParamer, UserOptions } from './typing'
+import Cache from './cache'
+
 export class Parser {
-  constructor(public readonly config: ResolvedConfig, public readonly options: UserOptions) {
+  public readonly config: ResolvedConfig
+
+  public readonly options: UserOptions
+
+  public cache: Cache
+
+  constructor(config: ResolvedConfig, options: UserOptions) {
+    this.config = config
+    this.options = options
+    this.cache = new Cache()
   }
 
-  public async setupRenderer() {
+  // public async setupRenderer() {
+  // }
+  public async parseStyle(id: string, opt: any) {
+    //
+
   }
 
   public async parseMarkdown(source: string, id: string, queryParamer: QueryParamer) {
-    const resourcePath: string = normalizePath(relative(this.config.root, id))
+    const resourcePath: string = normalizePath(relative(this.config.root, queryParamer.fileName))
 
     // The uniqu name of child component for `vue demo code`
     const uniqComponentName = `Com${uniqid()}Demo`
 
-    const highlight: (str: string, lang: string, attrs: string) => string = function (str, lang, attrs) {
+    const highlight = function highlight(str: string, lang: string, attrs: string) {
       // 代码高亮
       if (lang && hljs.getLanguage(lang)) {
         // 使用 highlight.js 实现代码高亮
@@ -32,39 +48,14 @@ export class Parser {
         }
         return ''
       }
-      else {
-        // 使用外部默认转义
-        return ''
-      }
-    }
-    let filePaths = resourcePath.split('/') // linux
-    if (resourcePath.includes('\\'))
-      filePaths = resourcePath.split('\\') // window
 
-    const fileName = filePaths[filePaths.length - 1]
-    // has fence mark
-    // strip the `vue demo code` directly
-    if (queryParamer.fence) {
-      // the nth of component
-      const index: number = typeof queryParamer.componentIndex === 'string'
-        ? isNaN(Number(queryParamer.componentIndex))
-          ? 0
-          : Number(queryParamer.componentIndex)
-        : 0
-      // match the `vue demo code`
-      const demoReg = new RegExp(`:::${this.options.containerName || 'demo'}[\\s\\S]*?:::`, 'ig')
-      const matches: null | RegExpMatchArray = source.match(demoReg)
-      if (!matches || !matches[index])
-        return ''
-
-      // weed out description code
-      // get the real single file component format file
-      const vueBlocks: null | RegExpMatchArray = matches[index].match(/```([\s\S]*?)(<[\s\S]*)```/i)
-      if (vueBlocks && vueBlocks[2])
-        return vueBlocks[2]
+      // 使用外部默认转义
       return ''
     }
-
+    let filePaths = resourcePath.split('/') // linux
+    if (resourcePath.includes('\\')) filePaths = resourcePath.split('\\') // window
+    const fileName = filePaths[filePaths.length - 1]
+    // const path = resourcePath.split(fileName)[0];
     // 初始化markdownit
     const md: MarkdownIt = new MarkdownIt({
       html: true, // 在源码中启用 HTML 标签
@@ -86,7 +77,8 @@ export class Parser {
       // gen uniq component Name
       const componentName = `${uniqComponentName}${componentIndex}`
       // gen query params
-      const request = `./${fileName}?fence&componentIndex=${componentIndex++}`
+      // const request = `${filePathTmp}block${componentIndex}-${fileName}?fence&componentIndex=${componentIndex++}`;
+      const request = `./examples/${fileName.split('.md')[0]}/demo${componentIndex++}.vue`
       // import component
       srciptImport += `import ${componentName} from '${request}';\n`
       return componentName
@@ -102,8 +94,7 @@ export class Parser {
     }
     // markdownit convert md fiele to html file
     const code: string = md.render(source)
-    const wrapClass = (this.options && this.options.wrapClass) || 'vue-a3ui-doc-wrap'
-
+    const wrapClass = (this.options && this.options.wrapClass) || 'vue-jeecg-ui-doc'
     // the final return
     const ret = `
         <template>
@@ -120,7 +111,49 @@ export class Parser {
   }
 
   public async transform(code: string, id: string, queryParamer: QueryParamer) {
-    if (id.includes('.md'))
-      return await this.parseMarkdown(code, id = `${id.split('.md')[0]}.md`, queryParamer)
+    const renderCodeCache = this.cache.getRenderCodeCache(id)
+    if (renderCodeCache)
+      return renderCodeCache
+
+    const result = await this.parseMarkdown(code, id, queryParamer)
+    // 第一次解析，缓存渲染结果
+    this.cache.resetExampleCache(id)
+    this.cache.setCurrentFile(id, queryParamer.fileName)
+    this.cache.setRenderCodeCache(id, result)
+    return result
+  }
+
+  public async load(id: string, queryParamer: QueryParamer) {
+    const sourceCodeCache = this.cache.getSourceCodeCache(id)
+    if (sourceCodeCache)
+      return sourceCodeCache
+
+    const result = fs.readFileSync(queryParamer.fileName, 'utf-8')
+    const resourcePath = queryParamer.fileName
+    let filePaths = resourcePath.split('/') // linux
+    if (resourcePath.includes('\\')) filePaths = resourcePath.split('\\') // window
+    const fileName = filePaths[filePaths.length - 1]
+    const path = resourcePath.split(fileName)[0]
+    const demoReg = new RegExp(`:::${this.options.containerName || 'demo'}[\\s\\S]*?:::`, 'ig')
+    let index = 0
+    const resultCode = result.replace(demoReg, (matches) => {
+      const blockCode = matches.replace(/```[\s\S]*?```/i, (t) => {
+        const blockPath = t.replaceAll('```', '').trim()
+        let blockFileName
+        if (blockPath && blockPath !== '')
+          blockFileName = `${blockPath}.vue`
+        else
+          blockFileName = `demo${index++}.vue`
+
+        const code = fs.readFileSync(`${path}examples/${fileName.split('.md')[0]}/${blockFileName}`, 'utf-8')
+        return `\`\`\`html \n${code}\n\`\`\``
+      })
+      return blockCode
+    })
+    // 第一次解析，缓存渲染结果
+    this.cache.resetExampleCache(id)
+    this.cache.setCurrentFile(id, queryParamer.fileName)
+    this.cache.setSourceCodeCache(id, resultCode)
+    return resultCode
   }
 }

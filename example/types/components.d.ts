@@ -7,11 +7,15 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Button: typeof import('./../src/components/Button.vue')['default']
-    Dict: typeof import('./../src/components/Dict.vue')['default']
-    Dist: typeof import('./../src/components/Dist.vue')['default']
+    CodeBox: typeof import('./../src/components/CodeBox.vue')['default']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElTag: typeof import('element-plus/es')['ElTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Toast: typeof import('./../src/components/toast/toast.vue')['default']
+    VersionTag: typeof import('./../src/components/version-tag.vue')['default']
   }
 }

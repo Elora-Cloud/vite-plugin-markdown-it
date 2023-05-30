@@ -3,14 +3,18 @@ import { defineConfig } from 'tsup'
 export default defineConfig({
   external: [
     'vite',
-    'vitepress',
-    /^vitepress/,
+    '@element-plus/icons-vue',
+    'element-plus',
+    'vue',
+    'vue-router',
+    'scss',
   ],
   entry: [
     'src/index.ts',
-    'src/theme.ts',
   ],
   outDir: 'dist',
-  dts: true,
+  dts: {
+    entry: 'src/index.ts',
+  },
   format: ['cjs', 'esm'],
 })

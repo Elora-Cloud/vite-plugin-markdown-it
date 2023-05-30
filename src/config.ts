@@ -7,13 +7,12 @@
 
 import type MarkdownIt from 'markdown-it'
 import container from 'markdown-it-container'
+import emoji from 'markdown-it-emoji'
+// @ts-expect-error
+import classes from '@toycode/markdown-it-class'
 import type { UserOptions } from './typing'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const emoji = require('markdown-it-emoji')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const classes = require('@toycode/markdown-it-class')
 
-const classMapping = function (prefix = 'vue-a3ui-doc') {
+const classMapping = function classMapping(prefix = 'vue-jeecg-ui-doc') {
   return {
     h1: `${prefix}-h1`,
     h2: `${prefix}-h2`,
@@ -45,7 +44,7 @@ const classMapping = function (prefix = 'vue-a3ui-doc') {
     dt: `${prefix}-dt`,
   }
 }
-export default function (
+export default function config(
   md: MarkdownIt,
   options: UserOptions,
   getName: () => string,
@@ -54,9 +53,7 @@ export default function (
   md.use(emoji)
   md.use(classes, classMapping(options.prefix))
   md.use(container, options.containerName, {
-    validate: (params: string): boolean => {
-      return containerReg.test(params.trim())
-    },
+    validate: (params: string): boolean => containerReg.test(params.trim()),
     render: (tokens: any, idx: number): string => {
       // open tag
       const m = tokens[idx].info.trim().match(/^demo\s+(.*)$/)
@@ -67,14 +64,12 @@ export default function (
         const description = m && m.length > 1 ? m[1] : ''
 
         let explain = ''
-        if (description !== '')
-          explain = `<template v-slot:explain>${md.render(description)}</template>`
-        return `<code-box>${explain}<template v-slot:demo> <${componentName}/></template>`
+        if (description !== '') explain = `<template v-slot:explain>${md.render(description)}</template>`
+        return `<CodeBox>${explain}<template v-slot:demo> <${componentName}/></template>`
       }
-      else {
-        // close tag
-        return '</code-box>\n'
-      }
+
+      // close tag
+      return '</CodeBox>\n'
     },
   })
   md.use(container, 'tip')
