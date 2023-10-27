@@ -8,6 +8,7 @@
 import type MarkdownIt from 'markdown-it'
 import container from 'markdown-it-container'
 import emoji from 'markdown-it-emoji'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import classes from '@toycode/markdown-it-class'
 import type { UserOptions } from './typing'
@@ -48,6 +49,7 @@ export default function config(
   md: MarkdownIt,
   options: UserOptions,
   getName: () => string,
+  getExampleSourceCode: () => string,
 ): void {
   const containerReg = new RegExp(`^${options.containerName}[\\s\\S]*?$`, 'i')
   md.use(emoji)
@@ -65,7 +67,7 @@ export default function config(
 
         let explain = ''
         if (description !== '') explain = `<template v-slot:explain>${md.render(description)}</template>`
-        return `<CodeBox>${explain}<template v-slot:demo> <${componentName}/></template>`
+        return `<CodeBox rawSource="${encodeURIComponent(getExampleSourceCode())}">${explain}<template v-slot:demo> <${componentName}/></template>`
       }
 
       // close tag

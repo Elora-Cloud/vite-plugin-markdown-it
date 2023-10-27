@@ -7,6 +7,11 @@
 
 <script setup lang="ts">
 import { defineOptions, nextTick, ref, useSlots } from 'vue'
+import { useClipboard } from '@vueuse/core'
+
+import { CaretTop } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
+const props = defineProps<{ rawSource: string }>()
 defineOptions({
   name: 'CodeBox',
 })
@@ -36,6 +41,22 @@ function showCode() {
     showText.value = '隐藏代码'
   }
 }
+const { copy, isSupported } = useClipboard({
+  source: decodeURIComponent(props.rawSource),
+  read: false,
+})
+const copyCode = async () => {
+  if (!isSupported)
+    ElMessage.error('复制错误')
+
+  try {
+    await copy()
+    ElMessage.success('复制成功')
+  }
+  catch (e: any) {
+    ElMessage.error(e.message)
+  }
+}
 </script>
 
 <template>
@@ -51,6 +72,45 @@ function showCode() {
         <slot name="explain" />
       </div>
     </div>
+    <el-divider />
+    <div class="op-btns">
+      <ElTooltip
+        content="复制代码"
+        :show-arrow="false"
+        :trigger="['hover', 'focus']"
+        :trigger-keys="[]"
+      >
+        <ElIcon
+          :size="16"
+          aria-label="复制代码"
+          class="op-btn"
+          tabindex="0"
+          role="button"
+          @click="copyCode"
+          @keydown.prevent.enter="copyCode"
+          @keydown.prevent.space="copyCode"
+        >
+          <i-ri-file-copy-line />
+        </ElIcon>
+      </ElTooltip>
+      <ElTooltip
+        :content="showText"
+        :show-arrow="false"
+        :trigger="['hover', 'focus']"
+        :trigger-keys="[]"
+      >
+        <button
+          ref="sourceCodeRef"
+          :aria-label="showText"
+          class="reset-btn el-icon op-btn"
+          @click="showCode"
+        >
+          <ElIcon :size="16">
+            <i-ri-code-line />
+          </ElIcon>
+        </button>
+      </ElTooltip>
+    </div>
     <div ref="code" class="content" :style="{ height }">
       <div class="code">
         <slot />
@@ -59,6 +119,20 @@ function showCode() {
     <div class="show-code" @click="showCode">
       {{ showText }}
     </div>
+    <Transition name="el-fade-in-linear">
+      <div
+        v-show="isShow"
+        class="example-float-control"
+        tabindex="0"
+        role="button"
+        @click="showCode"
+      >
+        <ElIcon :size="16">
+          <CaretTop />
+        </ElIcon>
+        <span>{{ showText }}</span>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -137,5 +211,24 @@ function showCode() {
       /* box-shadow: 0 0 4px 0 #ecf3fb; */
     }
   }
+}
+.example-float-control{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--border-color);
+  height: 44px;
+  box-sizing: border-box;
+  background-color: var(--bg-color, #fff);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-top: -1px;
+  color: var(--el-text-color-secondary);
+  cursor: pointer;
+  position: sticky;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
 }
 </style>
