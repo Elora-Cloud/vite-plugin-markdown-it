@@ -1,4 +1,5 @@
 .hljs {
+  margin: 0;
 }
 
 .page-content {
@@ -291,7 +292,6 @@
 
 .page-content :checked + .radio-label {
   position: relative;
-  z-index: 1;
   border-color: #0366d6;
 }
 
@@ -1012,7 +1012,6 @@
     height: 14px;
     top: 30px;
     left: 0;
-    z-index: 0;
     transition: top .25s cubic-bezier(0, 1, .5, 1), opacity .25s, background-color .5s;
   }
 

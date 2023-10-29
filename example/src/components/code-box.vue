@@ -160,7 +160,6 @@ const copyCode = async () => {
   & > .demo {
     position: relative;
     padding: 20px;
-    z-index: 10;
   }
 
   & > .content {
@@ -172,7 +171,7 @@ const copyCode = async () => {
     background-color: var(--jeecg-component-bg-color);
 
     & > .code {
-      margin: 10px;
+      margin: 0 10px;
 
       pre {
         margin-bottom: 0;
@@ -239,7 +238,6 @@ const copyCode = async () => {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10;
   }
 
   .op-btns {
