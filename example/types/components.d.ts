@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeBox: typeof import('./../src/components/code-box.vue')['default']
+    DocPage: typeof import('./../src/components/doc-page.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
     ElDivider: typeof import('element-plus/es')['ElDivider']

@@ -6,11 +6,12 @@
 */
 
 <script setup lang="ts">
-import { defineOptions, nextTick, ref, useSlots } from 'vue'
+import { defineOptions, onMounted, ref, useSlots } from 'vue'
 import { useClipboard } from '@vueuse/core'
+import { ElDivider, ElIcon, ElMessage, ElTooltip } from 'element-plus'
 
 import { CaretTop } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
+
 const props = defineProps<{ rawSource: string }>()
 defineOptions({
   name: 'CodeBox',
@@ -23,12 +24,13 @@ const explainSlotState = ref(false)
 if (useSlots().explain) explainSlotState.value = true
 
 const code = ref()
-nextTick(() => {
-  relHeight.value = code.value.getBoundingClientRect().height
+// nextTick(() => {
+//
+// })
+onMounted(() => {
+  relHeight.value = code.value ? code.value.getBoundingClientRect().height : 0
   height.value = '0px'
 })
-
-// const getCodeStyle = computed(() => codeStyle);
 function showCode() {
   if (isShow.value) {
     isShow.value = false
@@ -41,6 +43,7 @@ function showCode() {
     showText.value = '隐藏代码'
   }
 }
+
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(props.rawSource),
   read: false,
@@ -61,9 +64,6 @@ const copyCode = async () => {
 
 <template>
   <div class="code-box">
-    <div class="demo">
-      <slot name="demo" />
-    </div>
     <div v-if="explainSlotState" class="explain">
       <div class="title">
         <span>说明</span>
@@ -72,7 +72,11 @@ const copyCode = async () => {
         <slot name="explain" />
       </div>
     </div>
-    <el-divider />
+    <ElDivider class="m-0" />
+    <div class="demo">
+      <slot name="demo" />
+    </div>
+    <ElDivider class="m-0" />
     <div class="op-btns">
       <ElTooltip
         content="复制代码"
@@ -90,7 +94,12 @@ const copyCode = async () => {
           @keydown.prevent.enter="copyCode"
           @keydown.prevent.space="copyCode"
         >
-          <i-ri-file-copy-line />
+          <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="1.2em" height="1.2em" data-v-5d9e4641="">
+            <path
+              fill="currentColor"
+              d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.007-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z"
+            />
+          </svg>
         </ElIcon>
       </ElTooltip>
       <ElTooltip
@@ -99,25 +108,27 @@ const copyCode = async () => {
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
       >
-        <button
-          ref="sourceCodeRef"
+        <ElIcon
+          :size="16"
+          class="op-btn"
           :aria-label="showText"
-          class="reset-btn el-icon op-btn"
+          tabindex="0"
+          role="button"
           @click="showCode"
         >
-          <ElIcon :size="16">
-            <i-ri-code-line />
-          </ElIcon>
-        </button>
+          <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="1.2em" height="1.2em" data-v-5d9e4641="">
+            <path
+              fill="currentColor"
+              d="m23 12l-7.071 7.071l-1.414-1.414L20.172 12l-5.657-5.657l1.414-1.414L23 12zM3.828 12l5.657 5.657l-1.414 1.414L1 12l7.071-7.071l1.414 1.414L3.828 12z"
+            />
+          </svg>
+        </ElIcon>
       </ElTooltip>
     </div>
     <div ref="code" class="content" :style="{ height }">
       <div class="code">
         <slot />
       </div>
-    </div>
-    <div class="show-code" @click="showCode">
-      {{ showText }}
     </div>
     <Transition name="el-fade-in-linear">
       <div
@@ -138,15 +149,20 @@ const copyCode = async () => {
 
 <style lang="scss" scoped>
 .code-box {
-  border: var(--jeecg-border-base);
+
+  border: 1px solid var(--el-border-color);
+  border-radius: var(--el-border-radius-base);
+
   &:hover {
     box-shadow: 0 0 10px 0 var(--jeecg-border-color-base);
   }
+
   & > .demo {
     position: relative;
     padding: 20px;
     z-index: 10;
   }
+
   & > .content {
     height: auto;
     overflow: hidden;
@@ -154,21 +170,26 @@ const copyCode = async () => {
     /* border: 1px dotted #d8d8d8; */
     border-bottom-width: 0;
     background-color: var(--jeecg-component-bg-color);
+
     & > .code {
       margin: 10px;
+
       pre {
         margin-bottom: 0;
       }
     }
   }
+
   & > .explain {
     margin: 10px;
+
     & > .title {
       display: flex;
       width: 100%;
       height: 50px;
       line-height: 50px;
     }
+
     & > .title::before {
       content: '';
       flex-grow: 0;
@@ -178,11 +199,13 @@ const copyCode = async () => {
       margin-top: 25px;
       border-top: 1px solid #e8eaec;
     }
+
     & > .title > span {
       height: 50px;
       line-height: 50px;
       padding: 0 10px;
     }
+
     & > .title::after {
       content: '';
       flex-grow: 1;
@@ -190,6 +213,7 @@ const copyCode = async () => {
       margin-top: 25px;
       border-top: 1px solid #e8eaec;
     }
+
     & > .text {
       padding: 0 5px;
       text-indent: 15px;
@@ -197,38 +221,45 @@ const copyCode = async () => {
       color: #8a8a8a;
     }
   }
-  & > .show-code {
-    height: 40px;
-    line-height: 40px;
-    border-top: 1px dotted #d8d8d8;
-    background-color: var(--jeecg-component-bg-color);
-    text-align: center;
-    color: #d8d8d8;
+
+  .example-float-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--border-color);
+    height: 44px;
+    box-sizing: border-box;
+    background-color: var(--bg-color, #fff);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-top: -1px;
+    color: var(--el-text-color-secondary);
     cursor: pointer;
-    &:hover {
-      color: #409dff;
-      /* background-color: #f6f8fa; */
-      /* box-shadow: 0 0 4px 0 #ecf3fb; */
-    }
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
   }
-}
-.example-float-control{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid var(--border-color);
-  height: 44px;
-  box-sizing: border-box;
-  background-color: var(--bg-color, #fff);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  margin-top: -1px;
-  color: var(--el-text-color-secondary);
-  cursor: pointer;
-  position: sticky;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
+
+  .op-btns {
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 2.5rem;
+
+  }
+
+  .op-btns .op-btn {
+    margin: 0 .5rem;
+    cursor: pointer;
+    color: var(--text-color-lighter);
+    transition: .2s;
+
+  }
+  .m-0 {
+    margin: 0rem;
+  }
 }
 </style>

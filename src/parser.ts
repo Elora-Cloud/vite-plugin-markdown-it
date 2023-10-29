@@ -72,6 +72,7 @@ export class Parser {
     // the final script appended
     let srciptImport = ''
 
+    let toc_source = ''
     // config markdown custom code
     config(md, this.options, () => {
       // gen uniq component Name
@@ -84,7 +85,7 @@ export class Parser {
       return componentName
     }, () => {
       return this.cache.getExampleCodeCache(id, componentIndex)
-    })
+    }, (res) => { toc_source = res })
 
     // install markdown plugins if exist
     if (this.options.plugins && this.options.plugins.length > 0) {
@@ -96,16 +97,22 @@ export class Parser {
     }
     // markdownit convert md fiele to html file
     const code: string = md.render(source)
-    const wrapClass = (this.options && this.options.wrapClass) || 'vue-jeecg-ui-doc'
+    const wrapClass = (this.options && this.options.wrapClass) || 'doc-content-wrapper'
+    const demoWrapperClass = (this.options && this.options.demoWrapperClass) || 'page-content'
+    const tocWrapperClass = (this.options && this.options.tocWrapperClass) || 'toc-wrapper'
     // the final return
     const ret = `
         <template>
-            <div class="${wrapClass}">
-                ${code}
-            </div>
+          <div class="${wrapClass}">
+             <div class="${demoWrapperClass}">
+                  ${code}
+              </div>
+              <DocPage tocWrapperClass="${tocWrapperClass}">
+                ${toc_source}
+               </DocPage>
+          </div>
         </template>
-
-        <script setup>
+        <script setup lang="ts">
             ${srciptImport}
         </script>
     `

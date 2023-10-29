@@ -21,7 +21,7 @@ function dealParamer(id: string): QueryParamer {
 }
 const VitePluginMarkdownIt = (_options?: UserOptions): PluginOption => {
   let parser: Parser
-  const defaultOptions: UserOptions = { containerName: 'demo', prefix: 'vue-jeecg-ui-doc' }
+  const defaultOptions: UserOptions = { containerName: 'demo', prefix: 'page-content' }
   const options: UserOptions = { ...defaultOptions, ..._options }
 
   return {

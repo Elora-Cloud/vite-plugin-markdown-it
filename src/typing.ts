@@ -30,9 +30,9 @@ export interface UserOptions {
    */
   readonly demoWrapperClass?: string
   /**
-   * the div className wrapped the `vue demo code` descriptions
+   * the div className wrapped the `vue demo code` toc
    */
-  readonly descWrapperClass?: string
+  readonly tocWrapperClass?: string
   /**
    * the div className wrapped the `vue demo code` source code
    */
