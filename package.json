@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-markdown-it",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "this is base vite parser markdown for markdown-it",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -85,5 +85,8 @@
   },
   "peerDependencies": {
     "vite": "^3.0.0 || ^4.0.0"
+  },
+  "directories": {
+    "example": "example"
   }
 }
