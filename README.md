@@ -1,7 +1,17 @@
 # vite-plugin-markdown-it
 
-A use markdown-it theme plugin for Vite.
+## Introduction
+A vite plugin that integrates' markdown it '.
 
+You can directly reference the '*. md' file as a component in the 'Vue' project built using 'vite'.
+
+The default plugins that integrate markdown it are as follows:
+
+* `markdown-it-anchor`
+* `markdown-it-class`
+* `markdown-it-container`
+* `markdown-it-emoji`
+* `markdown-it-toc-done-right`
 
 ## Install
 
@@ -28,18 +38,16 @@ export default defineConfig({
 })
 
 ```
-You need to **copy** the files in the example directory to your project
 
-You need to import the `style` theme and global vue `component` in your `main.[t|j]s` file.
+You need to register the Vue global components and style files required for the plugin in your `main.[t|j]s` file.
 
 In `main.[t|j]s`:
 
 ```ts
-import CodeBox from './components/code-box.vue'
-import VersionTag from './components/version-tag.vue'
-import "./index.scss"
-app.component('CodeBox', CodeBox)
-app.component('VersionTag', VersionTag)
+import { useGlobalComponents } from 'vite-plugin-markdown-it/example/src/components/index.ts';
+
+const app = createApp(App)
+useGlobalComponents(app);
 
 ```
 
@@ -65,3 +73,10 @@ declare module '*.md' {
 ## Example Usage
 
 See the [example](./example) app in this repo.
+
+## Precautions
+
+* Vue routing mode cannot use 'hash' mode, otherwise the right navigation bar will become invalid
+
+* The scrolling event of the component must be passed to the window layer, otherwise the right navigation bar will not be updated during scrolling
+*

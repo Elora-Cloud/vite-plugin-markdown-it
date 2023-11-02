@@ -168,7 +168,7 @@ const copyCode = async () => {
     transition: height 0.2s;
     /* border: 1px dotted #d8d8d8; */
     border-bottom-width: 0;
-    background-color: var(--jeecg-component-bg-color);
+    background-color: var(--toc-component-bg-color);
 
     & > .code {
       margin: 0 10px;
@@ -217,7 +217,7 @@ const copyCode = async () => {
       padding: 0 5px;
       text-indent: 15px;
       font-size: 13px;
-      color: #8a8a8a;
+      color: var(--toc-text-color-lighter);
     }
   }
 
@@ -225,10 +225,10 @@ const copyCode = async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--toc-border-color);
     height: 44px;
     box-sizing: border-box;
-    background-color: var(--bg-color, #fff);
+    background-color: var(--toc-bg-color, #fff);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-top: -1px;
@@ -252,7 +252,7 @@ const copyCode = async () => {
   .op-btns .op-btn {
     margin: 0 .5rem;
     cursor: pointer;
-    color: var(--text-color-lighter);
+    color: var(--toc-text-color-lighter);
     transition: .2s;
 
   }

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { registerGlobalComponents } from './components/index'
+import { useGlobalComponents } from './components/index'
 import App from './App.vue'
 import 'element-plus/dist/index.css'
 
@@ -20,5 +20,5 @@ const router = createRouter({
 
 const app = createApp(App)
 app.use(router)
-registerGlobalComponents(app)
+useGlobalComponents(app)
 app.mount('#app')

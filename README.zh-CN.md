@@ -1,13 +1,25 @@
 # vite-plugin-markdown-it
 
-一个实现了markdown-it样式的vite插件。
+## 介绍
+
+一个集成了`markdown-it`的vite插件。
+
+可以在使用`vite`构建的`Vue`项目中直接引用 `*.md`文件作为组件。
+
+默认集成了了markdown-it的插件如下：
+
+* `markdown-it-anchor`
+* `markdown-it-class`
+* `markdown-it-container`
+* `markdown-it-emoji`
+* `markdown-it-toc-done-right`
 
 
 
 ## 安装
 
 ```bash
-npm i -D vite-plugin-markdown-it
+npm i vite-plugin-markdown-it
 ```
 
 
@@ -29,17 +41,13 @@ export default defineConfig({
 })
 
 ```
-你需要拷贝 example 目录下的文件到你的项目中
-
-同时你还需要导入`style`的主题样式和注册全局vue组件在`main.[t|j]s`文件中。
+你需要注册插件所需的vue全局组件，以及样式文件，在`main.[t|j]s`文件中。
 
 ```ts
-import CodeBox from './components/code-box.vue'
-import VersionTag from './components/version-tag.vue'
-import "./index.scss"
+import { useGlobalComponents } from 'vite-plugin-markdown-it/example/src/components/index.ts';
 
-app.component('CodeBox', CodeBox)
-app.component('VersionTag', VersionTag)
+const app = createApp(App)
+useGlobalComponents(app);
 ```
 
 

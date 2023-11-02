@@ -62,8 +62,7 @@ export default function config(
     slugify(s: string) {
       return String(s).trim().toLowerCase().replace(/\s+/g, '-')
     },
-    permalink: true,
-    permalinkSymbol: '',
+    permalink: markdownItAnchor.permalink.headerLink(),
   })
   md.use(markdownItTocDoneRight, {
     level: [3, 4, 5, 6],
@@ -102,4 +101,12 @@ export default function config(
   })
   md.use(container, 'tip')
   md.use(container, 'warning')
+  // install markdown plugins if exist
+  if (options.plugins && options.plugins.length > 0) {
+    let len = options.plugins.length
+    while (len--) {
+      const curPlugin = options.plugins[len]
+      md.use(curPlugin.plugin, ...curPlugin.options)
+    }
+  }
 }

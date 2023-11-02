@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "gitee",
-    "url": "https://gitee.com/mumulx/vite-plugin-markdown-it.git"
+    "url": "https://gitee.com/jeecg_cloud/vite-plugin-markdown-it"
   },
   "scripts": {
     "test": "vitest -u",
@@ -32,7 +32,7 @@
     "build:example": "vite build example",
     "preview:example": "vite preview example",
     "release": "bumpp",
-    "build:dts": "rimraf -rf ./dist/components && vue-tsc --declaration --skipLibCheck --emitDeclarationOnly ./example/src/components/index.ts --outDir ./dist/components",
+    "build:dts": "rimraf -rf ./dist/components  && vue-tsc --declaration --skipLibCheck --emitDeclarationOnly ./example/src/components/index.ts --outDir ./dist/components",
     "build": "rimraf -rf /dist && tsup"
   },
   "keywords": [],

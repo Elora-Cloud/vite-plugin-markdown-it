@@ -1,9 +1,88 @@
+:root{
+  --vp-content-width: 90%;
+  --header-height: 0px;
+  --toc-wrapper-display: block;
+  --toc-brand-color: var(--el-color-primary);
+  --toc-bg-color: #fff;
+  --toc-text-color-lighter: #8a8a8a ;
+  --toc-border-color: var(--el-border-color);
+  --block-tip-bg-color: rgb(var(--el-color-primary-rgb) 0.1);
+  --toc-component-bg-color: #fff;
+  --toc-markdown-doc-table: #fff;
+  --toc-markdown-doc-table-border: 1px solid #c6cbd1;
+  --toc-markdown-doc-table-bg: #f6f8fa;
+  --toc-info-light: #e3e5eb;
+}
+.doc-content-wrapper {
+  display: flex;
+  color: var(--toc-text-color-lighter);
+  .toc-marker {
+    opacity: 0;
+    position: absolute;
+    background-color: var(--toc-brand-color);
+    border-radius: 4px;
+    width: 4px;
+    height: 14px;
+    top: 30px;
+    left: 0;
+    transition: top .25s cubic-bezier(0, 1, .5, 1), opacity .25s, background-color .5s;
+  }
+
+  .toc-wrapper {
+    min-width: 0;
+    padding-left: 32px;
+    display: var(--toc-wrapper-display);
+
+    .toc-content {
+      position: sticky;
+      top: calc(var(--header-height) + 32px);
+      margin-top: 0;
+      padding: 4px 8px 4px 12px;
+      margin-bottom: 32px;
+    }
+
+    .toc-items {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      line-height: 1.2;
+
+      ul, ol {
+        padding-left: 1.25em;
+      }
+
+      .toc-item {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--toc-text-color-lighter);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .toc-link {
+          display: inline-block;
+          position: relative;
+          color: var(--toc-text-color-lighter);
+          transition: color var(--el-transition-duration);
+          touch-action: manipulation;
+          text-decoration: inherit;
+
+          &.active {
+            color: var(--toc-brand-color);
+          }
+        }
+      }
+    }
+  }
+}
+
 .hljs {
   margin: 0;
 }
 
 .page-content {
   width: var(--vp-content-width);
+  flex: 1;
 }
 
 .page-content .octicon {
@@ -769,12 +848,12 @@
 }
 
 .page-content-table .page-content-tr {
-  background-color: var(--jeecg-markdown-jeecgui-doc-table);
-  border-top: var(--jeecg-markdown-jeecgui-doc-table-border);
+  background-color: var(--toc-markdown-doc-table);
+  border-top: var(--toc-markdown-doc-table-border);
 }
 
 .page-content-table .page-content-tr:nth-child(2n) {
-  background-color: var(--jeecg-markdown-doc-table);
+  background-color: var(--toc-markdown-doc-table-bg);
 }
 
 .page-content-img {
@@ -974,6 +1053,12 @@
   vertical-align: middle;
 }
 
+.page-content .header-anchor {
+  touch-action: manipulation;
+  text-decoration: inherit;
+  color: var(--toc-text-color-lighter);
+}
+
 /* 常见问题样式 */
 .page-content-wrap details {
   margin-bottom: 12px;
@@ -983,7 +1068,7 @@
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: var(--jeecg-info-light);
+  background-color: var(--toc-info-light);
   border-radius: 6px;
 }
 
@@ -993,72 +1078,4 @@
   border-radius: 4px;
   border-left: 5px solid var(--el-color-primary);
   margin: 20px 0;
-}
-
-.doc-content-wrapper {
-  display: flex;
-  --vp-content-width: 90%;
-  --header-height: 0px;
-  --brand-color: var(--el-color-primary);
-  color: #8a8a8a;
-
-
-  .toc-marker {
-    opacity: 0;
-    position: absolute;
-    background-color: var(--brand-color);
-    border-radius: 4px;
-    width: 4px;
-    height: 14px;
-    top: 30px;
-    left: 0;
-    transition: top .25s cubic-bezier(0, 1, .5, 1), opacity .25s, background-color .5s;
-  }
-
-  .toc-wrapper {
-    padding-left: 32px;
-
-    .toc-content {
-      position: sticky;
-      top: calc(var(--header-height) + 32px);
-      margin-top: 0;
-      padding: 4px 8px 4px 12px;
-      margin-bottom: 32px;
-      width: 200px;
-    }
-
-    .toc-items {
-      list-style: none;
-      padding: 0;
-      margin: 12px 0 0;
-      line-height: 1.2;
-
-      ul, ol {
-        padding-left: 1.25em;
-      }
-
-      .toc-item {
-        margin-top: 10px;
-        font-size: 11px;
-        color: var(--text-color-lighter);
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        color: inherit;
-
-        .toc-link {
-          display: inline-block;
-          position: relative;
-          color: var(--text-color-lighter);
-          transition: color var(--el-transition-duration);
-          touch-action: manipulation;
-          text-decoration: inherit;
-
-          &.active {
-            color: var(--brand-color);
-          }
-        }
-      }
-    }
-  }
 }

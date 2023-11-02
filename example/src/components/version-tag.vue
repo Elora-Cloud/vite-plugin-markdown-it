@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineOptions, defineProps } from 'vue'
+import { defineOptions } from 'vue'
 import { ElTag } from 'element-plus'
 defineProps<{
   version: string

@@ -22,13 +22,6 @@ export class Parser {
     this.cache = new Cache()
   }
 
-  // public async setupRenderer() {
-  // }
-  public async parseStyle(id: string, opt: any) {
-    //
-
-  }
-
   public async parseMarkdown(source: string, id: string, queryParamer: QueryParamer) {
     const resourcePath: string = normalizePath(relative(this.config.root, queryParamer.fileName))
 
@@ -87,14 +80,6 @@ export class Parser {
       return this.cache.getExampleCodeCache(id, componentIndex)
     }, (res) => { toc_source = res })
 
-    // install markdown plugins if exist
-    if (this.options.plugins && this.options.plugins.length > 0) {
-      let len = this.options.plugins.length
-      while (len--) {
-        const curPlugin = this.options.plugins[len]
-        md.use(curPlugin.plugin, ...curPlugin.options)
-      }
-    }
     // markdownit convert md fiele to html file
     const code: string = md.render(source)
     const wrapClass = (this.options && this.options.wrapClass) || 'doc-content-wrapper'

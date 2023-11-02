@@ -38,45 +38,12 @@ export interface UserOptions {
    */
   readonly highlightClass?: string
   /**
-   * the slot's name before `vue demo code` render result
+   * the div className wrapped the `vue demo code` source code
    */
-  readonly beforeDemoSlotName?: string
-  /**
-   * the slot's name after `vue demo code` render result
-   */
-  readonly afterDemoSlotName?: string
-  /**
-   * the slot's name before `vue demo code` descriptions
-   */
-  readonly beforeDescSlotName?: string
-  /**
-   * the slot's name after `vue demo code` descriptions
-   */
-  readonly afterDescSlotName?: string
-  /**
-   * the slot's name before `vue demo code` source code
-   */
-  readonly beforeCodeSlotName?: string
-  /**
-   * the slot's name after `vue demo code` source code
-   */
-  readonly afterCodeSlotName?: string
   readonly prefix?: string
+
   /**
    * custom markdownit plugins
-   * @example
-   * [{
-   *  plugin: require('markdown-it-anchor'),
-   *  options: [{
-   *      level: 2,
-            slugify: slugify,
-            permalink: true,
-            permalinkBefore: true
-   *  }]
-   * }]
-   * =>
-   * md.use(plugin, ...options)
-   * @default []
    */
   readonly plugins?: MarkdownItPluginOptions[]
 

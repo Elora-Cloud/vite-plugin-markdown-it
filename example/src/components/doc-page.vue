@@ -6,7 +6,7 @@
 */
 
 <script setup lang="ts">
-import { defineOptions, defineProps, ref } from 'vue'
+import { defineOptions, ref } from 'vue'
 import { useActiveSidebarLinks } from './active-bar'
 
 defineProps<{ tocWrapperClass: string }>()
