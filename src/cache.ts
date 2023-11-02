@@ -7,7 +7,7 @@ interface ICacheObject {
   source: string // 源码
   render: string // 渲染之后的代码
   examples: any // 案例集合
-  names: string[] // 名称列表
+  names: any[] // 名称列表
 }
 export default class {
   cache: Record<string, ICacheObject> = {}

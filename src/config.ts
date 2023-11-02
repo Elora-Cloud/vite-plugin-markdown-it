@@ -8,12 +8,15 @@
 import type MarkdownIt from 'markdown-it'
 import container from 'markdown-it-container'
 import emoji from 'markdown-it-emoji'
+import markdownItAnchor from 'markdown-it-anchor'
+import markdownItTocDoneRight from 'markdown-it-toc-done-right'
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import classes from '@toycode/markdown-it-class'
 import type { UserOptions } from './typing'
 
-const classMapping = function classMapping(prefix = 'vue-jeecg-ui-doc') {
+const classMapping = function classMapping(prefix = 'page-content') {
   return {
     h1: `${prefix}-h1`,
     h2: `${prefix}-h2`,
@@ -50,10 +53,32 @@ export default function config(
   options: UserOptions,
   getName: () => string,
   getExampleSourceCode: () => string,
+  setTocSource: (val: string) => void,
 ): void {
   const containerReg = new RegExp(`^${options.containerName}[\\s\\S]*?$`, 'i')
   md.use(emoji)
   md.use(classes, classMapping(options.prefix))
+  md.use(markdownItAnchor, {
+    slugify(s: string) {
+      return String(s).trim().toLowerCase().replace(/\s+/g, '-')
+    },
+    permalink: markdownItAnchor.permalink.headerLink(),
+  })
+  md.use(markdownItTocDoneRight, {
+    level: [3, 4, 5, 6],
+    containerClass: 'toc-content',
+    listClass: 'toc-items',
+    itemClass: 'toc-item',
+    linkClass: 'toc-link',
+    listType: 'ul',
+    slugify(s) {
+      return String(s).trim().toLowerCase().replace(/\s+/g, '-')
+    },
+    callback: (res) => {
+      if (res !== '<nav class="toc-content"></nav>')
+        setTocSource(res.replace('<nav class="toc-content">', '').replace('</nav>', ''))
+    },
+  })
   md.use(container, options.containerName, {
     validate: (params: string): boolean => containerReg.test(params.trim()),
     render: (tokens: any, idx: number): string => {
@@ -76,4 +101,12 @@ export default function config(
   })
   md.use(container, 'tip')
   md.use(container, 'warning')
+  // install markdown plugins if exist
+  if (options.plugins && options.plugins.length > 0) {
+    let len = options.plugins.length
+    while (len--) {
+      const curPlugin = options.plugins[len]
+      md.use(curPlugin.plugin, ...curPlugin.options)
+    }
+  }
 }

@@ -1,14 +1,15 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { useGlobalComponents } from './components/index'
 import App from './App.vue'
-import CodeBox from './components/code-box.vue'
-import VersionTag from './components/version-tag.vue'
-import './style/index.scss'
+import 'element-plus/dist/index.css'
+
 const router = createRouter({
   history: createWebHistory('/'),
+
   routes: [
     {
-      path: '/',
+      path: '/button',
       component: () => import('./base/button.md'),
     }, {
       path: '/alert',
@@ -19,6 +20,5 @@ const router = createRouter({
 
 const app = createApp(App)
 app.use(router)
-app.component('CodeBox', CodeBox)
-app.component('VersionTag', VersionTag)
+useGlobalComponents(app)
 app.mount('#app')
