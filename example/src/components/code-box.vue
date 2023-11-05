@@ -6,13 +6,12 @@
 */
 
 <script setup lang="ts">
-import { defineOptions, onMounted, ref, useSlots } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { ElDivider, ElIcon, ElMessage, ElTooltip } from 'element-plus'
 
 import { CaretTop } from '@element-plus/icons-vue'
 
-const props = defineProps<{ rawSource: string }>()
+const props = defineProps<{ rawSource?: string }>()
 defineOptions({
   name: 'CodeBox',
 })
@@ -45,7 +44,7 @@ function showCode() {
 }
 
 const { copy, isSupported } = useClipboard({
-  source: decodeURIComponent(props.rawSource),
+  source: decodeURIComponent(props.rawSource || ''),
   read: false,
 })
 const copyCode = async () => {
