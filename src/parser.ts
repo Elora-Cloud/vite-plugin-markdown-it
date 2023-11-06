@@ -86,6 +86,7 @@ export class Parser {
     const demoWrapperClass = (this.options && this.options.demoWrapperClass) || 'page-content'
     const tocWrapperClass = (this.options && this.options.tocWrapperClass) || 'toc-wrapper'
     // the final return
+    // do not set <script lang="ts">,esbuild will error
     const ret = `
         <template>
           <div class="${wrapClass}">
@@ -97,7 +98,7 @@ export class Parser {
                </DocPage>
           </div>
         </template>
-        <script setup lang="ts">
+        <script setup>
             ${srciptImport}
         </script>
     `
