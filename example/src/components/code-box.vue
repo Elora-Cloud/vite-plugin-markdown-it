@@ -154,7 +154,7 @@ const copyCode = async () => {
   border-radius: var(--el-border-radius-base);
 
   &:hover {
-    box-shadow: 0 0 10px 0 var(--jeecg-border-color-base);
+    box-shadow: 0 0 10px 0 var(--toc-border-color-base);
   }
 
   & > .demo {
