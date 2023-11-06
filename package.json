@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-markdown-it",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "this is base vite parser markdown for markdown-it",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
