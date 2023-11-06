@@ -9,7 +9,8 @@
     "dist",
     "example/src/components",
     "example/src/style",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "exports": {
     ".": {
