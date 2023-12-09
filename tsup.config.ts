@@ -12,6 +12,7 @@ export default defineConfig({
   entry: [
     'src/index.ts',
   ],
+  target: 'esnext',
   outDir: 'dist',
   dts: {
     entry: 'src/index.ts',
