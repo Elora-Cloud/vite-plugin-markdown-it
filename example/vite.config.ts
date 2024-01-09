@@ -28,6 +28,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
