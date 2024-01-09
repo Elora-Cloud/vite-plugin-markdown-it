@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-markdown-it",
+  "name": "@elora-cloud/vite-plugin-markdown-it",
   "version": "1.0.4",
   "type": "module",
   "description": "this is base vite parser markdown for markdown-it",
