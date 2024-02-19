@@ -14,7 +14,7 @@ import { CaretTop } from '@element-plus/icons-vue'
 
 const props = defineProps<{ rawSource?: string }>()
 defineOptions({
-  name: 'CodeBox',
+  name: 'EloraCodeBox',
 })
 const showText = ref('显示代码')
 const relHeight = ref(0)

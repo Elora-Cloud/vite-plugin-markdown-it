@@ -5,7 +5,7 @@ defineProps<{
   version: string
 }>()
 defineOptions({
-  name: 'VersionTag',
+  name: 'EloraVersionTag',
 })
 </script>
 

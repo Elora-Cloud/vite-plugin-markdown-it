@@ -1,0 +1,25 @@
+{
+    "extends": "@mistjs/tsconfig-vue",
+    "include": ["src/**/*.ts","src/**/*.vue"],
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "compilerOptions": {
+        "baseUrl": ".", //用于解析非绝对模块名的基本目录，相对模块不受影响。
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "isolatedModules": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "lib": ["ESNext"],
+        "moduleResolution": "node", //指定模块解析策略，node或classic
+        "noEmit": true,
+        "typeRoots": ["node_modules/@types"], // 指定声明文件或文件夹的路径列表
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+
+}

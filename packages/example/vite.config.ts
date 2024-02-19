@@ -5,9 +5,20 @@ import Inspect from 'vite-plugin-inspect'
 import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import VitePluginMarkdownIt from '../src'
+import { VitePluginMarkdownIt } from '@elora-cloud/vite-plugin-markdown-it'
 
 export default defineConfig({
+  build: {
+    // 设置最终构建的浏览器兼容目标
+    target: 'modules',
+    minify: true,
+    emptyOutDir: false,
+    // cssCodeSplit: true,
+    //  chunk 大小警告的限制（以 kb为单位）
+    // 启用/禁用 gzip 压缩大小报告
+    reportCompressedSize: false,
+    outDir: 'dist',
+  },
   plugins: [
     VitePluginMarkdownIt(),
     vue({
@@ -23,13 +34,13 @@ export default defineConfig({
       ],
     }),
     components({
-      dirs: ['src/components/'], dts: 'types/components.d.ts', resolvers: [ElementPlusResolver()], deep: true,
+      dts: 'types/components.d.ts',
+      resolvers: [ElementPlusResolver()],
+      deep: true,
     }),
   ],
   resolve: {
     alias: {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },

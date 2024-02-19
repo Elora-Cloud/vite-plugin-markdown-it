@@ -11,7 +11,7 @@ import { useActiveSidebarLinks } from './active-bar'
 
 defineProps<{ tocWrapperClass: string }>()
 defineOptions({
-  name: 'DocPage',
+  name: 'EloraDocPage',
 })
 const marker = ref()
 const container = ref()

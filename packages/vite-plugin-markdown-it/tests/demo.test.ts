@@ -1,11 +1,16 @@
 import fs from 'fs'
 import { fileURLToPath } from 'url'
+import { dirname, resolve } from 'path'
 import { describe, expect, it } from 'vitest'
 import { normalizePath } from 'vite'
-
-const pathDir = 'D:\\work\\vite-plugin-markdown-it\\example\\src\\base'
 const demoReg = /:::demo[\s\S]*?:::/ig
+export const __dirname = dirname(fileURLToPath(import.meta.url))
+export const dir_path = (...args: string[]) => resolve(__dirname, ...args)
+const ROOT_DIR = dir_path('.')
+const SRC_DIR = dir_path('../src')
+const EXAMPLE_DIR = dir_path('../../example')
 
+const pathDir = resolve(EXAMPLE_DIR, 'src/base')
 describe('mdBlock2vue', () => {
   it('should work', () => {
     const rootDir = fs.readdirSync(pathDir)
@@ -42,17 +47,9 @@ describe('mdBlock2vue', () => {
 })
 
 describe('parserUrl', async () => {
-  const urlPath = 'D:\\work\\vite-plugin-markdown-it\\example\\src\\base\\button.md'
+  it('should it parser', async () => {
+    const autoMd = resolve(EXAMPLE_DIR, 'src/base/button.md')
 
-  it('should it parser', async () => {
-    // const url = new URL(urlPath);
-    const srcDir = normalizePath(fileURLToPath(new URL(urlPath, import.meta.url)))
-    console.log(srcDir)
-  })
-})
-describe('parserUrl', async () => {
-  it('should it parser', async () => {
-    const autoMd = 'D:\\work\\vite-plugin-markdown-it\\example\\src\\base\\button.md'
     const result = fs.readFileSync(autoMd, 'utf-8')
 
     const demoReg = new RegExp(`:::${'demo'}[\\s\\S]*?:::`, 'ig')
