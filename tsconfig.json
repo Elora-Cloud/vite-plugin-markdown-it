@@ -1,9 +1,0 @@
-{
-    "extends": "@mistjs/tsconfig-vue",
-    "include": ["src/**/*.ts"],
-    "compilerOptions": {
-        "lib": ["esnext"],
-        "moduleResolution": "node"
-    },
-
-}

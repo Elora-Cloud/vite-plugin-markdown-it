@@ -1,95 +1,28 @@
 {
-  "name": "vite-plugin-markdown-it",
-  "version": "1.0.3",
-  "description": "this is base vite parser markdown for markdown-it",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "example/src/components",
-    "example/src/style",
-    "CHANGELOG.md",
-    "LICENSE"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./*.md": "./",
-    "./example/src/components/*": "./example/src/components/*",
-    "./example/src/style/*": "./example/src/style/*",
-    "./package.json": "./package.json",
-    "./dist/*": "./dist/*"
-  },
+  "name": "@elora-cloud/vite-plugin-markdown-it-monorepo",
+  "version": "1.0.6",
+  "type": "module",
+  "description": "vite-plugin-markdown-it-monorepo",
   "repository": {
     "type": "gitee",
     "url": "https://gitee.com/Elora_Cloud/vite-plugin-markdown-it"
   },
   "scripts": {
-    "test": "vitest -u",
-    "dev:example": "vite dev example",
-    "build:example": "vite build example",
-    "preview:example": "vite preview example",
-    "release": "bumpp",
-    "build:dts": "rimraf -rf ./dist/components  && vue-tsc --declaration --skipLibCheck --emitDeclarationOnly ./example/src/components/index.ts --outDir ./dist/components",
-    "build": "rimraf -rf /dist && tsup"
+    "example:dev": "pnpm --filter=vite-plugin-markdown-it-example dev",
+    "test": "pnpm --filter=vite-plugin-markdown-it test",
+    "typecheck": "pnpm --filter=vite-plugin-markdown-it typecheck",
+    "build": "pnpm --filter=vite-plugin-markdown-it build"
   },
+  "engines": {
+    "node": ">=18",
+    "pnpm": "^8"
+  },
+  "packageManager": "pnpm@8.10.2",
   "keywords": [],
   "author": "Mumulx",
   "license": "ISC",
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.1.0",
-    "@types/markdown-it-emoji": "^2.0.3",
-    "@vueuse/core": "^10.5.0",
-    "markdown-it": "^13.0.2",
-    "markdown-it-anchor": "^8.6.7",
-    "markdown-it-class": "^1.0.0",
-    "markdown-it-container": "^3.0.0",
-    "markdown-it-emoji": "^2.0.2",
-    "markdown-it-toc-done-right": "^4.2.0",
-    "rimraf": "^5.0.5",
-    "uniqid": "^5.4.0",
-    "vue-tsc": "^1.8.22"
-  },
   "devDependencies": {
     "@mistjs/eslint-config-vue": "^0.0.3",
-    "@mistjs/tsconfig-vue": "^0.0.3",
-    "@toycode/markdown-it-class": "^1.2.4",
-    "@types/markdown-it": "^12.2.3",
-    "@types/markdown-it-container": "^2.0.8",
-    "@types/node": "^18.18.8",
-    "@types/uniqid": "^5.3.3",
-    "@vitejs/plugin-vue": "^4.4.0",
-    "bumpp": "^8.2.1",
-    "changelogen": "^0.4.1",
-    "element-plus": "^2.4.2",
-    "eslint": "^8.53.0",
-    "highlight.js": "^11.9.0",
-    "sass": "^1.69.5",
-    "tsup": "^6.7.0",
-    "typescript": "^5.2.2",
-    "unplugin-auto-import": "^0.16.7",
-    "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.5.0",
-    "vite-plugin-inspect": "^0.7.41",
-    "vitest": "^0.34.6",
-    "vue": "^3.3.7",
-    "vue-router": "^4.2.5"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search"
-      ]
-    }
-  },
-  "peerDependencies": {
-    "vite": "^3.0.0 || ^4.0.0"
-  },
-  "directories": {
-    "example": "example",
-    "test": "tests"
+    "eslint": "^8.56.0"
   }
 }

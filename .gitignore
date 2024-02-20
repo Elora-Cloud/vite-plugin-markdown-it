@@ -1,4 +1,7 @@
 node_modules
+packages/*/es
+packages/*/node_modules
+packages/*/lib
 dist
 .cache
 .idea
