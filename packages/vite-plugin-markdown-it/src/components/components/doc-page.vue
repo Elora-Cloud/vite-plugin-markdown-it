@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useActiveSidebarLinks } from './active-bar'
+import { useActiveSidebarLinks } from '../utils/active-bar'
 
 defineProps<{ tocWrapperClass: string }>()
 defineOptions({
@@ -27,7 +27,3 @@ useActiveSidebarLinks(container, marker)
     </nav>
   </aside>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

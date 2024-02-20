@@ -5,7 +5,7 @@ import Inspect from 'vite-plugin-inspect'
 import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { VitePluginMarkdownIt } from '@elora-cloud/vite-plugin-markdown-it'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
 
 export default defineConfig({
   build: {

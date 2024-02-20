@@ -92,11 +92,11 @@ export default function config(
 
         let explain = ''
         if (description !== '') explain = `<template v-slot:explain>${md.render(description)}</template>`
-        return `<CodeBox rawSource="${encodeURIComponent(getExampleSourceCode())}">${explain}<template v-slot:demo> <${componentName}/></template>`
+        return `<EloraCodeBox rawSource="${encodeURIComponent(getExampleSourceCode())}">${explain}<template v-slot:demo> <${componentName}/></template>`
       }
 
       // close tag
-      return '</CodeBox>\n'
+      return '</EloraCodeBox>\n'
     },
   })
   md.use(container, 'tip')

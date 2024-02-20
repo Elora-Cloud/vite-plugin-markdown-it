@@ -9,10 +9,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CodeBox: typeof import('./../src/components/code-box.vue')['default']
-    DocPage: typeof import('./../src/components/doc-page.vue')['default']
+    CodeBox: typeof import('./../src/components/components/code-box.vue')['default']
+    DocPage: typeof import('./../src/components/components/doc-page.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VersionTag: typeof import('./../src/components/version-tag.vue')['default']
+    VersionTag: typeof import('./../src/components/components/version-tag.vue')['default']
   }
 }

@@ -8,7 +8,7 @@ You can directly reference the '*. md' file as a component in the 'Vue' project 
 The default plugins that integrate markdown it are as follows:
 
 * `markdown-it-anchor`
-* `markdown-it-class`
+* `@toycode/markdown-it-class`
 * `markdown-it-container`
 * `markdown-it-emoji`
 * `markdown-it-toc-done-right`
@@ -27,7 +27,7 @@ In `vite.config.[t|j]s`:
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VitePluginMarkdownIt from 'vite-plugin-markdown-it'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -44,10 +44,11 @@ You need to register the Vue global components and style files required for the 
 In `main.[t|j]s`:
 
 ```ts
-import { useGlobalComponents } from 'vite-plugin-markdown-it/example/src/components/index.ts';
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components'
+import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css'
 
 const app = createApp(App)
-useGlobalComponents(app);
+app.use(VitePluginMarkdownIt)
 
 ```
 

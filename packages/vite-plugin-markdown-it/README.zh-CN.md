@@ -9,7 +9,7 @@
 默认集成了了markdown-it的插件如下：
 
 * `markdown-it-anchor`
-* `markdown-it-class`
+* `@toycode/markdown-it-class`
 * `markdown-it-container`
 * `markdown-it-emoji`
 * `markdown-it-toc-done-right`
@@ -30,7 +30,7 @@ npm i vite-plugin-markdown-it
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VitePluginMarkdownIt from 'vite-plugin-markdown-it'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -44,10 +44,11 @@ export default defineConfig({
 你需要注册插件所需的vue全局组件，以及样式文件，在`main.[t|j]s`文件中。
 
 ```ts
-import { useGlobalComponents } from 'vite-plugin-markdown-it/example/src/components/index.ts';
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components'
+import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css'
 
 const app = createApp(App)
-useGlobalComponents(app);
+app.use(VitePluginMarkdownIt)
 ```
 
 

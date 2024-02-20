@@ -5,18 +5,17 @@ import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import dts from 'vite-plugin-dts'
-import commonjsExternals from 'vite-plugin-commonjs-externals'
 
 const externals = ['path', /^electron(\/.+)?$/]
 export default defineConfig({
   build: {
     target: 'modules',
-    outDir: 'es',
+    outDir: 'dist/components/es',
     emptyOutDir: false,
     minify: true,
     // 这一块是不会被使用的
     lib: {
-      entry: 'src/index.ts',
+      entry: 'src/components/index.ts',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
@@ -25,28 +24,27 @@ export default defineConfig({
         '@element-plus/icons-vue',
         'element-plus',
         '@vueuse/core',
-        'highlight.js',
         'vue',
         'vue-router',
         'scss',
       ],
-      input: ['src/index.ts'],
+      input: ['src/components/index.ts'],
       output: [
         // esm
         {
           format: 'es',
-          dir: 'es',
+          dir: 'dist/components/es',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'src',
+          preserveModulesRoot: 'src/components',
         },
         // cjs
         {
           format: 'cjs',
-          dir: 'lib',
+          dir: 'dist/components/lib',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'src',
+          preserveModulesRoot: 'src/components',
         },
       ],
     },
@@ -64,9 +62,6 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver(),
       ],
-    }),
-    commonjsExternals({
-      externals,
     }),
     components({
       dirs: ['src/components/'], dts: 'types/components.d.ts', resolvers: [ElementPlusResolver()], deep: true,

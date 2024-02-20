@@ -101,9 +101,9 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 | size                              | 尺寸                                           | large/default/small                               | —         |
 | type                              | 类型                                           | primary/success/warning/danger/info/text(delete)  | —       |
 | plain                             | 是否为朴素按钮                                      | boolean                                           | false     |
-| text<VersionTag version="2.2.0" /> | 是否为文字按钮                                      | boolean                                           | false     |
-| bg<VersionTag version="2.2.0" />  | 是否显示文字按钮背景颜色                                 | boolean                                           | false     |
-| link<VersionTag version="2.2.1" /> | 是否为链接按钮                                      | boolean                                           | false     |
+| text<EloraVersionTag version="2.2.0" /> | 是否为文字按钮                                      | boolean                                           | false     |
+| bg<EloraVersionTag version="2.2.0" />  | 是否显示文字按钮背景颜色                                 | boolean                                           | false     |
+| link<EloraVersionTag version="2.2.1" /> | 是否为链接按钮                                      | boolean                                           | false     |
 | round                             | 是否为圆角按钮                                      | boolean                                           | false     |
 | circle                            | 是否为圆形按钮                                      | boolean                                           | false     |
 | loading                           | 是否为加载中状态                                     | boolean                                           | false     |

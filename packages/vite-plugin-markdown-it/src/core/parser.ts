@@ -1,3 +1,4 @@
+import { relative } from 'path'
 import fs from 'fs'
 import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
@@ -7,15 +8,6 @@ import uniqid from 'uniqid'
 import config from './config'
 import type { QueryParamer, UserOptions } from './typing'
 import Cache from './cache'
-const path = (() => {
-  const mod = require('path')
-  return mod?.__esModule
-    ? mod
-    : Object.assign(Object.create(null), mod, {
-      default: mod,
-      [Symbol.toStringTag]: 'Module',
-    })
-})()
 
 export class Parser {
   public readonly config: ResolvedConfig
@@ -31,7 +23,7 @@ export class Parser {
   }
 
   public async parseMarkdown(source: string, id: string, queryParamer: QueryParamer) {
-    const resourcePath: string = normalizePath(path.relative(this.config.root, queryParamer.fileName))
+    const resourcePath: string = normalizePath(relative(this.config.root, queryParamer.fileName))
 
     // The uniqu name of child component for `vue demo code`
     const uniqComponentName = `Com${uniqid()}Demo`
@@ -101,9 +93,9 @@ export class Parser {
              <div class="${demoWrapperClass}">
                   ${code}
               </div>
-              <DocPage tocWrapperClass="${tocWrapperClass}">
+              <EloraDocPage tocWrapperClass="${tocWrapperClass}">
                 ${toc_source}
-               </DocPage>
+               </EloraDocPage>
           </div>
         </template>
         <script setup>
