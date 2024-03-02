@@ -6,6 +6,8 @@ import Inspect from 'vite-plugin-inspect'
 import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
+import { generateExternal } from './scripts/rollup'
 
 export default defineConfig({
   plugins: [vue({
@@ -14,14 +16,21 @@ export default defineConfig({
   Inspect(),
   AutoImport({
     imports: ['vue', '@vueuse/core', 'vue-router'],
-    // dirs: ['src/utils'], // 配置自动导入的目录
     dts: './types/auto-import.d.ts',
     resolvers: [
       ElementPlusResolver(),
+      IconsResolver({
+        prefix: 'Icon',
+      }),
     ],
   }),
   components({
-    dirs: ['src/components/'], dts: 'types/components.d.ts', resolvers: [ElementPlusResolver()], deep: true,
+    dirs: ['src/components/'],
+    dts: 'types/components.d.ts',
+    resolvers: [ElementPlusResolver(), IconsResolver({
+      enabledCollections: ['ep'],
+    })],
+    deep: true,
   })],
   resolve: {
     alias: {
@@ -33,7 +42,10 @@ export default defineConfig({
     emptyOutDir: false,
     minify: true,
     rollupOptions: {
-      external: ['vue'],
+      // 确保外部化处理那些你不想打包进库的依赖
+      external: await generateExternal({
+        full: true,
+      }),
       output: {
         exports: 'named',
         globals: {

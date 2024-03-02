@@ -8,9 +8,6 @@
 <script setup lang="ts">
 import { onMounted, ref, useSlots } from 'vue'
 import { useClipboard } from '@vueuse/core'
-import { ElDivider, ElIcon, ElMessage, ElTooltip } from 'element-plus'
-
-import { CaretTop } from '@element-plus/icons-vue'
 
 const props = defineProps<{ rawSource?: string }>()
 defineOptions({

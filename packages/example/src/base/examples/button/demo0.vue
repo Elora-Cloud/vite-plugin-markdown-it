@@ -1,14 +1,4 @@
 <script setup lang="ts">
-import {
-  Check,
-  Delete,
-  Edit,
-  Message,
-  Search,
-  Star,
-} from '@element-plus/icons-vue'
-import { ElMessageBox } from 'element-plus'
-
 function primaryClick() {
   ElMessageBox.alert('111')
 }

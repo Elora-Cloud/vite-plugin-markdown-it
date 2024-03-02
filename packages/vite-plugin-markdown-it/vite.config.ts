@@ -5,8 +5,9 @@ import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import dts from 'vite-plugin-dts'
+import IconsResolver from 'unplugin-icons/resolver'
+import { generateExternal } from './scripts/rollup'
 
-const externals = ['path', /^electron(\/.+)?$/]
 export default defineConfig({
   build: {
     target: 'modules',
@@ -19,22 +20,17 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [
-        'vite',
-        '@element-plus/icons-vue',
-        'element-plus',
-        '@vueuse/core',
-        'vue',
-        'vue-router',
-        'scss',
-      ],
+      // 确保外部化处理那些你不想打包进库的依赖
+      external: await generateExternal({
+        full: true,
+      }),
       input: ['src/components/index.ts'],
       output: [
         // esm
         {
           format: 'es',
           dir: 'dist/components/es',
-          entryFileNames: '[name].js',
+          entryFileNames: '[name].mjs',
           preserveModules: true,
           preserveModulesRoot: 'src/components',
         },
@@ -61,10 +57,18 @@ export default defineConfig({
       dts: './types/auto-import.d.ts',
       resolvers: [
         ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'Icon',
+        }),
       ],
     }),
     components({
-      dirs: ['src/components/'], dts: 'types/components.d.ts', resolvers: [ElementPlusResolver()], deep: true,
+      dirs: ['src/components/'],
+      dts: 'types/components.d.ts',
+      resolvers: [ElementPlusResolver(), IconsResolver({
+        enabledCollections: ['ep'],
+      })],
+      deep: true,
     }),
   ],
 })

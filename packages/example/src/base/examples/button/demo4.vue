@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import {
-  ArrowLeft,
-  ArrowRight,
-  Delete,
-  Edit,
-  Share,
-} from '@element-plus/icons-vue'
-</script>
-
 <template>
   <div class="demo">
     <el-button-group>

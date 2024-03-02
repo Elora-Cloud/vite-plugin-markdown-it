@@ -11,6 +11,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeBox: typeof import('./../src/components/components/code-box.vue')['default']
     DocPage: typeof import('./../src/components/components/doc-page.vue')['default']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VersionTag: typeof import('./../src/components/components/version-tag.vue')['default']

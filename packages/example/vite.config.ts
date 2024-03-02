@@ -6,6 +6,7 @@ import components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
+import IconsResolver from 'unplugin-icons/resolver'
 
 export default defineConfig({
   build: {
@@ -13,7 +14,6 @@ export default defineConfig({
     target: 'modules',
     minify: true,
     emptyOutDir: false,
-    // cssCodeSplit: true,
     //  chunk 大小警告的限制（以 kb为单位）
     // 启用/禁用 gzip 压缩大小报告
     reportCompressedSize: false,
@@ -31,11 +31,16 @@ export default defineConfig({
       dts: './types/auto-import.d.ts',
       resolvers: [
         ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'Icon',
+        }),
       ],
     }),
     components({
       dts: 'types/components.d.ts',
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver(), IconsResolver({
+        enabledCollections: ['ep'],
+      })],
       deep: true,
     }),
   ],
