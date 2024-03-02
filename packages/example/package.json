@@ -1,6 +1,6 @@
 {
   "name": "@elora-cloud/vite-plugin-markdown-it-example",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "vite-plugin-markdown-it-example",
   "type": "module",
   "files": [
@@ -27,6 +27,7 @@
     "highlight.js": "^11.9.0"
   },
   "devDependencies": {
+    "unplugin-icons": "^0.17.4",
     "@mistjs/tsconfig-vue": "^0.0.3",
     "@types/node": "^18.19.17",
     "@types/uniqid": "^5.3.4",

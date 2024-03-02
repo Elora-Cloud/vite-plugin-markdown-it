@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ElMessageBox } from 'element-plus'
-
 function hello() {
   ElMessageBox.alert('Hello World!')
 }

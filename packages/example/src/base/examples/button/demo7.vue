@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ElMessage } from 'element-plus'
-
 function delayHandle() {
   ElMessage('延迟执行')
 }

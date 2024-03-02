@@ -1,6 +1,6 @@
 {
   "name": "@elora-cloud/vite-plugin-markdown-it",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "private": false,
   "description": "this is base vite parser markdown for markdown-it",
@@ -25,12 +25,12 @@
     },
     "./components": {
       "types": "./dist/components/es/index.d.ts",
-      "import": "./dist/components/es/index.js",
+      "import": "./dist/components/es/index.mjs",
       "require": "./dist/components/lib/index.js"
     },
     "./components/es/*": {
       "types": ["./dist/components/es/**.d.ts"],
-      "import": "./dist/components/es/*.js"
+      "import": "./dist/components/es/*.mjs"
     },
     "./components/lib/*": {
       "types": ["./dist/components/es/**.d.ts"],
@@ -68,6 +68,8 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
+    "unplugin-icons": "^0.17.4",
+    "@pnpm/types": "^9.4.2",
     "@mistjs/tsconfig-vue": "^0.0.3",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-container": "^2.0.9",
