@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Eleme } from '@element-plus/icons-vue'
+</script>
+
 <template>
   <el-button type="primary" loading>
     加载中

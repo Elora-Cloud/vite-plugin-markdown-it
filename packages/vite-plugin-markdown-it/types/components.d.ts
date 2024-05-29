@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     DocPage: typeof import('./../src/components/components/doc-page.vue')['default']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElIconCaretTop: typeof import('@element-plus/icons-vue')['CaretTop']
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue'
 function primaryClick() {
   ElMessageBox.alert('111')
 }
@@ -8,10 +9,10 @@ function primaryClick() {
   <div class="demo">
     <el-row>
       <el-button>默认按钮</el-button>
-      <el-button v-acl="1" type="primary" @click="primaryClick">
+      <el-button type="primary" @click="primaryClick">
         主要按钮
       </el-button>
-      <el-button v-acl type="success">
+      <el-button type="success">
         成功按钮
       </el-button>
       <el-button type="info">

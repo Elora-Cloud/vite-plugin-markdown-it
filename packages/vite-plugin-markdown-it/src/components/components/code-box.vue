@@ -136,7 +136,7 @@ const copyCode = async () => {
         @click="showCode"
       >
         <ElIcon :size="16">
-          <CaretTop />
+          <ElIconCaretTop />
         </ElIcon>
         <span>{{ showText }}</span>
       </div>

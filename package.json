@@ -1,6 +1,6 @@
 {
   "name": "@elora-cloud/vite-plugin-markdown-it-monorepo",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "description": "vite-plugin-markdown-it-monorepo",
   "repository": {
@@ -15,9 +15,9 @@
   },
   "engines": {
     "node": ">=18",
-    "pnpm": "^8"
+    "pnpm": "^9"
   },
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@9.0.6",
   "keywords": [],
   "author": "Mumulx",
   "license": "ISC",

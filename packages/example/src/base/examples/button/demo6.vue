@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Search } from '@element-plus/icons-vue'
+</script>
+
 <template>
   <el-row>
     <el-button size="large">
