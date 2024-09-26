@@ -1,20 +1,18 @@
-import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { resolve } from 'node:path';
+import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
 
-import Inspect from 'vite-plugin-inspect'
-import components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import IconsResolver from 'unplugin-icons/resolver'
-import { generateExternal } from './scripts/rollup'
+import IconsResolver from 'unplugin-icons/resolver';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
+import Inspect from 'vite-plugin-inspect';
+import { generateExternal } from './scripts/rollup';
 
 export default defineConfig({
   plugins: [vue({
     include: [/\.vue$/],
-  }),
-  Inspect(),
-  AutoImport({
+  }), Inspect(), AutoImport({
     imports: ['vue', '@vueuse/core', 'vue-router'],
     dts: './types/auto-import.d.ts',
     resolvers: [
@@ -23,8 +21,7 @@ export default defineConfig({
         prefix: 'Icon',
       }),
     ],
-  }),
-  components({
+  }), components({
     dirs: ['src/components/'],
     dts: 'types/components.d.ts',
     resolvers: [ElementPlusResolver(), IconsResolver({
@@ -59,4 +56,4 @@ export default defineConfig({
       name: 'vite-plugin-markdown-it',
     },
   },
-})
+});

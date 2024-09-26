@@ -1,15 +1,14 @@
-import type { App, Plugin } from 'vue'
-import { EloraCodeBox, EloraDocPage, EloraVersionTag } from './components'
-import './style/index.scss'
+import type { App, Plugin } from 'vue';
+import { globalComponents } from './components';
+import './style/index.scss';
 
-const components = [EloraCodeBox, EloraDocPage, EloraVersionTag]
-export * from './components'
+export * from './components';
 const VitePluginMarkdownIt: Plugin = {
   install(App: App) {
-    components.forEach((item) => {
-      App.use(item)
-    })
+    globalComponents.forEach((item) => {
+      App.use(item);
+    });
   },
-}
+};
 
-export default VitePluginMarkdownIt
+export default VitePluginMarkdownIt;

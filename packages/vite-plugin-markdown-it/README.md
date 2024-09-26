@@ -19,15 +19,14 @@ The default plugins that integrate markdown it are as follows:
 npm i -D vite-plugin-markdown-it
 ```
 
-
 ## Usage
 
 In `vite.config.[t|j]s`:
 
 ```ts
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core';
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -35,8 +34,7 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
   ],
-})
-
+});
 ```
 
 You need to register the Vue global components and style files required for the plugin in your `main.[t|j]s` file.
@@ -44,14 +42,12 @@ You need to register the Vue global components and style files required for the 
 In `main.[t|j]s`:
 
 ```ts
-import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components'
-import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components';
+import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css';
 
-const app = createApp(App)
-app.use(VitePluginMarkdownIt)
-
+const app = createApp(App);
+app.use(VitePluginMarkdownIt);
 ```
-
 
 ## TypeScript Config
 
@@ -59,15 +55,15 @@ If you're using Typescript than you'll want take the additional step of adding a
 
 ```ts
 declare module '*.vue' {
-  import type { ComponentOptions } from 'vue'
-  const Component: ComponentOptions
-  export default Component
+  import type { ComponentOptions } from 'vue';
+  const Component: ComponentOptions;
+  export default Component;
 }
 
 declare module '*.md' {
-  import type { ComponentOptions } from 'vue'
-  const Component: ComponentOptions
-  export default Component
+  import type { ComponentOptions } from 'vue';
+  const Component: ComponentOptions;
+  export default Component;
 }
 ```
 

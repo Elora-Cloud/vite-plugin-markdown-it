@@ -1,4 +1,4 @@
-import { defineBuildConfig } from 'unbuild'
+import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   entries: ['src/core/index'],
@@ -14,4 +14,4 @@ export default defineBuildConfig({
       minify: true,
     },
   },
-})
+});

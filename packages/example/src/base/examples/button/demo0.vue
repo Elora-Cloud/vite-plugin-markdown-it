@@ -1,84 +1,82 @@
-<script setup lang="ts">
-import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue'
-function primaryClick() {
-  ElMessageBox.alert('111')
-}
+<script lang="ts" setup>
+import {
+  Check,
+  Delete,
+  Edit,
+  Message,
+  Search,
+  Star,
+} from '@element-plus/icons-vue';
 </script>
 
 <template>
-  <div class="demo">
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary" @click="primaryClick">
-        主要按钮
-      </el-button>
-      <el-button type="success">
-        成功按钮
-      </el-button>
-      <el-button type="info">
-        信息按钮
-      </el-button>
-      <el-button type="warning">
-        警告按钮
-      </el-button>
-      <el-button type="danger">
-        危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button plain>
-        朴素按钮
-      </el-button>
-      <el-button type="primary" plain>
-        主要按钮
-      </el-button>
-      <el-button type="success" plain>
-        成功按钮
-      </el-button>
-      <el-button type="info" plain>
-        信息按钮
-      </el-button>
-      <el-button type="warning" plain>
-        警告按钮
-      </el-button>
-      <el-button type="danger" plain>
-        危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button round>
-        圆角按钮
-      </el-button>
-      <el-button type="primary" round>
-        主要按钮
-      </el-button>
-      <el-button type="success" round>
-        成功按钮
-      </el-button>
-      <el-button type="info" round>
-        信息按钮
-      </el-button>
-      <el-button type="warning" round>
-        警告按钮
-      </el-button>
-      <el-button type="danger" round>
-        危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button :icon="Search" circle />
-      <el-button type="primary" :icon="Edit" circle />
-      <el-button type="success" :icon="Check" circle />
-      <el-button type="info" :icon="Message" circle />
-      <el-button type="warning" :icon="Star" circle />
-      <el-button type="danger" :icon="Delete" circle />
-    </el-row>
+  <div class="mb-4">
+    <el-button>Default</el-button>
+    <el-button type="primary">
+      Primary
+    </el-button>
+    <el-button type="success">
+      Success
+    </el-button>
+    <el-button type="info">
+      Info
+    </el-button>
+    <el-button type="warning">
+      Warning
+    </el-button>
+    <el-button type="danger">
+      Danger
+    </el-button>
+  </div>
+
+  <div class="mb-4">
+    <el-button plain>
+      Plain
+    </el-button>
+    <el-button type="primary" plain>
+      Primary
+    </el-button>
+    <el-button type="success" plain>
+      Success
+    </el-button>
+    <el-button type="info" plain>
+      Info
+    </el-button>
+    <el-button type="warning" plain>
+      Warning
+    </el-button>
+    <el-button type="danger" plain>
+      Danger
+    </el-button>
+  </div>
+
+  <div class="mb-4">
+    <el-button round>
+      Round
+    </el-button>
+    <el-button type="primary" round>
+      Primary
+    </el-button>
+    <el-button type="success" round>
+      Success
+    </el-button>
+    <el-button type="info" round>
+      Info
+    </el-button>
+    <el-button type="warning" round>
+      Warning
+    </el-button>
+    <el-button type="danger" round>
+      Danger
+    </el-button>
+  </div>
+
+  <div>
+    <el-button :icon="Search" circle />
+    <el-button type="primary" :icon="Edit" circle />
+    <el-button type="success" :icon="Check" circle />
+    <el-button type="info" :icon="Message" circle />
+    <el-button type="warning" :icon="Star" circle />
+    <el-button type="danger" :icon="Delete" circle />
   </div>
 </template>
-
-<style scoped lang="scss">
-  .demo :deep(.el-row ){
-    box-sizing: border-box;
-    margin-top: 10px;
-  }
-</style>

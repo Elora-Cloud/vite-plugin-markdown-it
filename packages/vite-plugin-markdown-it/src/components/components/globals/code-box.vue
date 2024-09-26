@@ -6,55 +6,56 @@
 */
 
 <script setup lang="ts">
-import { onMounted, ref, useSlots } from 'vue'
-import { useClipboard } from '@vueuse/core'
+import { useClipboard } from '@vueuse/core';
+import { onMounted, ref, useSlots } from 'vue';
 
-const props = defineProps<{ rawSource?: string }>()
 defineOptions({
   name: 'EloraCodeBox',
-})
-const showText = ref('显示代码')
-const relHeight = ref(0)
-const isShow = ref(false)
-const height = ref('auto')
-const explainSlotState = ref(false)
-if (useSlots().explain) explainSlotState.value = true
+});
+const props = defineProps<{ rawSource?: string }>();
+const showText = ref('显示代码');
+const relHeight = ref(0);
+const isShow = ref(false);
+const height = ref('auto');
+const explainSlotState = ref(false);
+if (useSlots().explain)
+  explainSlotState.value = true;
 
-const code = ref()
+const code = ref();
 // nextTick(() => {
 //
 // })
 onMounted(() => {
-  relHeight.value = code.value ? code.value.getBoundingClientRect().height : 0
-  height.value = '0px'
-})
+  relHeight.value = code.value ? code.value.getBoundingClientRect().height : 0;
+  height.value = '0px';
+});
 function showCode() {
   if (isShow.value) {
-    isShow.value = false
-    height.value = '0px'
-    showText.value = '显示代码'
+    isShow.value = false;
+    height.value = '0px';
+    showText.value = '显示代码';
   }
   else {
-    isShow.value = true
-    height.value = `${relHeight.value}px`
-    showText.value = '隐藏代码'
+    isShow.value = true;
+    height.value = `${relHeight.value}px`;
+    showText.value = '隐藏代码';
   }
 }
 
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(props.rawSource || ''),
   read: false,
-})
-const copyCode = async () => {
+});
+async function copyCode() {
   if (!isSupported)
-    ElMessage.error('复制错误')
+    ElMessage.error('复制错误');
 
   try {
-    await copy()
-    ElMessage.success('复制成功')
+    await copy();
+    ElMessage.success('复制成功');
   }
   catch (e: any) {
-    ElMessage.error(e.message)
+    ElMessage.error(e.message);
   }
 }
 </script>

@@ -14,23 +14,20 @@
 * `markdown-it-emoji`
 * `markdown-it-toc-done-right`
 
-
-
 ## 安装
 
 ```bash
 npm i vite-plugin-markdown-it
 ```
 
-
 ## 使用
 
 在 `vite.config.[t|j]s`增加如下配置：
 
 ```ts
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core';
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -38,20 +35,17 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
   ],
-})
-
+});
 ```
 你需要注册插件所需的vue全局组件，以及样式文件，在`main.[t|j]s`文件中。
 
 ```ts
-import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components'
-import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css'
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components';
+import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css';
 
-const app = createApp(App)
-app.use(VitePluginMarkdownIt)
+const app = createApp(App);
+app.use(VitePluginMarkdownIt);
 ```
-
-
 
 ## TypeScript配置
 
@@ -59,18 +53,17 @@ app.use(VitePluginMarkdownIt)
 用于帮助Typescript理解Vue SFC文件和Markdown文件的结构。
 对于VueJS开发者，你可能已经为你的VueJS文件做了这个，但是你可以用一个单独的文件来包装它`shims.d.ts`在你的项目根目录下：
 
-
 ```ts
 declare module '*.vue' {
-  import type { ComponentOptions } from 'vue'
-  const Component: ComponentOptions
-  export default Component
+  import type { ComponentOptions } from 'vue';
+  const Component: ComponentOptions;
+  export default Component;
 }
 
 declare module '*.md' {
-  import type { ComponentOptions } from 'vue'
-  const Component: ComponentOptions
-  export default Component
+  import type { ComponentOptions } from 'vue';
+  const Component: ComponentOptions;
+  export default Component;
 }
 ```
 
@@ -82,4 +75,4 @@ declare module '*.md' {
 
 * vue路由模式不能使用 `hash` 模式，否则右边导航条会失效
 * 组件的滚动事件一定要传递到window这一层，否则滚动时右边导航条不会更新
-* 
+*

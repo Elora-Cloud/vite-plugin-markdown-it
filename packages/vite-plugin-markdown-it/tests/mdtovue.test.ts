@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, it } from 'vitest';
 
 const mdFiles = '### 带输入建议\n'
   + '\n'
@@ -75,24 +75,25 @@ const mdFiles = '### 带输入建议\n'
   + '### Autocomplete Methods\n'
   + '| 方法名 | 说明 | 参数 |\n'
   + '| ---- | ---- | ---- |\n'
-  + '| focus | 使 input 获取焦点 | - |\n'
+  + '| focus | 使 input 获取焦点 | - |\n';
 
 describe('demo', () => {
   it('should work', () => {
-    const result = mdFiles
-    const demoReg = new RegExp(`:::${'demo'}[\\s\\S]*?:::`, 'ig')
-    let index = 0
+    const result = mdFiles;
+    const demoReg = new RegExp(`:::${'demo'}[\\s\\S]*?:::`, 'gi');
+    let index = 0;
     result.replace(demoReg, (matches) => {
-      console.log(index++)
-      const blockCode = matches.replace(/```[\s\S]*?```/i, (t) => {
-        const blockPath = t.replaceAll('```', '').trim()
+      console.log(index++);
+      const blockCode = matches.replace(/```[\s\S]*?```/, (t) => {
+        // eslint-disable-next-line unused-imports/no-unused-vars
+        const blockPath = t.replaceAll('```', '').trim();
         // console.log(blockPath)
-        const code = 'sdfsddfdf'
-        return `\`\`\`html \n${code}\n\`\`\``
-      })
+        const code = 'sdfsddfdf';
+        return `\`\`\`html \n${code}\n\`\`\``;
+      });
       // console.log(blockCode);
       // return aaa;
-      return blockCode
-    })
-  })
-})
+      return blockCode;
+    });
+  });
+});

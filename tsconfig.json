@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+
+    /* 项目选项 */
+    "jsx": "preserve", // 指定JSX代码生成用于的开发环境
+    "jsxFactory": "h", // 当使用经典的JSX运行时编译JSX元素时，更改.js文件中调用的函数，默认：React.createElement 。
+    "jsxFragmentFactory": "Fragment", // 是否生成相应的Map映射的文件，默认：false。
+    "lib": ["dom", "esnext"], // 是否通过为所有导入模块创建命名空间对象
+    "baseUrl": ".", // 目标语言的版本
+    "module": "ESNext", // 生成代码的模板标准
+    "moduleResolution": "bundler", // 是否检查未使用的参数，默认：false。
+
+    "paths": {}, // 是否区分文件系统大小写规则
+    "resolveJsonModule": true, // 是否解析 JSON 模块，默认：false。
+    "allowImportingTsExtensions": true, // 指定 JSX 片段工厂函数在指定了 jsxFactory 编译器选项的情况下针对 react JSX 发出时使用。
+    "allowJs": true, // 指定模块解析策略，node或classic
+    /* 严格检查选项 */
+    "strict": true, // 应当设置为 true，因为 Vite 使用 esbuild 来转译 TypeScript，并受限于单文件转译的限制。
+    "strictFunctionTypes": false, // 开启所有严格的类型检查,默认：false，启动后将开启所有的严格检查选项。
+    "strictNullChecks": true, // 是否跳过声明文件的类型检查，这可以在编译期间以牺牲类型系统准确性为代价来节省时间，默认：false。,
+    "noImplicitAny": false, // 指定项目运行时使用的库。
+
+    /* 附加检查 */
+    "noUnusedLocals": false, // 是否检查未使用的局部变量，默认：false。
+    "noUnusedParameters": false, // 是否对js文件进行编译，默认：false。
+    "sourceMap": true, // 是否启用对函数类型的严格检查，默认：false
+
+    /* 模块解析选项 */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, // 是否启用严格的空检查，默认：false。
+    /* 高级选项 */
+    "forceConsistentCasingInFileNames": true, // 是否禁止隐式的any类型，默认：false。,
+    "isolatedModules": true,
+    "skipLibCheck": false
+  }
+}

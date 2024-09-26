@@ -6,42 +6,29 @@ const buttons = [
   { type: 'info', text: 'info' },
   { type: 'warning', text: 'warning' },
   { type: 'danger', text: 'danger' },
-] as const
+] as const;
 </script>
 
 <template>
-  <p>Basic text button</p>
-  <div class="flex justify-space-between mb-4 flex-wrap gap-4">
+  <p>Basic link button</p>
+  <div class="mb-4">
     <el-button
       v-for="button in buttons"
       :key="button.text"
       :type="button.type"
-      text
+      link
     >
       {{ button.text }}
     </el-button>
   </div>
 
-  <p>Background color always on</p>
-  <div class="flex justify-space-between mb-4 flex-wrap gap-4">
+  <p>Disabled link button</p>
+  <div>
     <el-button
       v-for="button in buttons"
       :key="button.text"
       :type="button.type"
-      text
-      bg
-    >
-      {{ button.text }}
-    </el-button>
-  </div>
-
-  <p>Disabled text button</p>
-  <div class="flex justify-space-between flex-wrap gap-4">
-    <el-button
-      v-for="button in buttons"
-      :key="button.text"
-      :type="button.type"
-      text
+      link
       disabled
     >
       {{ button.text }}

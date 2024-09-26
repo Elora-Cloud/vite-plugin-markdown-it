@@ -1,17 +1,50 @@
 <script setup lang="ts">
-import { Delete, Edit, Search, Share } from '@element-plus/icons-vue'
+const buttons = [
+  { type: '', text: 'plain' },
+  { type: 'primary', text: 'primary' },
+  { type: 'success', text: 'success' },
+  { type: 'info', text: 'info' },
+  { type: 'warning', text: 'warning' },
+  { type: 'danger', text: 'danger' },
+] as const;
 </script>
 
 <template>
-  <div class="demo">
-    <el-button type="primary" :icon="Edit" />
-    <el-button type="primary" :icon="Share" />
-    <el-button type="primary" :icon="Delete" />
-    <el-button type="primary" :icon="Search">
-      搜索
+  <p>Basic text button</p>
+  <div class="mb-4">
+    <el-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      text
+    >
+      {{ button.text }}
     </el-button>
-    <el-button type="primary">
-      上传<i class="el-icon-upload el-icon--right" />
+  </div>
+
+  <p>Background color always on</p>
+  <div class="mb-4">
+    <el-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      text
+      bg
+    >
+      {{ button.text }}
+    </el-button>
+  </div>
+
+  <p>Disabled text button</p>
+  <div>
+    <el-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      text
+      disabled
+    >
+      {{ button.text }}
     </el-button>
   </div>
 </template>

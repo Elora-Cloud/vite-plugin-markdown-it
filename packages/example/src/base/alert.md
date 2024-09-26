@@ -1,90 +1,113 @@
-## Alert 警告
+# Alert 提示
 
 用于页面中展示重要的提示信息。
 
-### 基本用法
+## 基础用法
 
-页面中的非浮层元素，不会自动消失。
+Alert 组件不属于浮层元素，不会自动消失或关闭。
 
-:::demo Alert 组件提供四种主题，由`type`属性指定，默认值为`info`。
+:::demo Alert 组件提供四种类型，由 `type` 属性指定，默认值为 `info`。
+
 ```
+basic
 ```
+
 :::
 
-### 主题
+## 主题
 
-Alert 组件提供了两个不同的主题：`light`和`dark`。
+Alert 组件提供了两个不同的主题：`light` 和 `dark`。
 
-:::demo 通过设置`effect`属性来改变主题，默认为`light`。
+:::demo 通过设置 `effect` 属性来改变主题，默认为 `light`。
+
 ```
+theme
 ```
+
 :::
 
+## 自定义关闭按钮
 
+你可以自定义关闭按钮为文字或其他符号。
 
-### 自定义关闭按钮
+:::demo 你可以设置 Alert 组件是否为可关闭状态， 关闭按钮的内容以及关闭时的回调函数同样可以定制。 `closable` 属性决定 Alert 组件是否可关闭， 该属性接受一个 `Boolean`，默认为 `false`。 你可以设置 `close-text` 属性来代替右侧的关闭图标， 需要注意的是 `close-text` 必须是一个字符串。 当 Alert 组件被关闭时会触发 `close` 事件。
 
-自定义关闭按钮为文字或其他符号。
-
-:::demo 在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。`closable`属性决定是否可关闭，接受`boolean`，默认为`true`。你可以设置`close-text`属性来代替右侧的关闭图标，注意：`close-text`必须为文本。设置`close`事件来设置关闭时的回调。
 ```
+close-button
 ```
+
 :::
 
-### 带有 icon
+## 使用图标
 
-表示某种状态时提升可读性。
+你可以通过为 Alert 组件添加图标来提高可读性。
 
-:::demo 通过设置`show-icon`属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。
+:::demo 通过设置 `show-icon` 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。
+
 ```
+icon
 ```
+
 :::
 
-### 文字居中
+## 文字居中
 
-使用 `center` 属性让文字水平居中。
+使用 `center` 属性来让文字水平居中。
 
 :::demo
+
 ```
+center
 ```
+
 :::
 
-### 带有辅助性文字介绍
+## 文字描述
 
-包含标题和内容，解释更详细的警告。
+为 Alert 组件添加一个更加详细的描述来使用户了解更多信息。
 
-:::demo 除了必填的`title`属性外，你可以设置`description`属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。
+:::demo 除了必填的 `title` 属性外，你可以设置 `description` 属性来帮助你更好地介绍，我们称之为辅助性文字。 辅助性文字只能存放文本内容，当内容超出长度限制时会自动换行显示。
+
 ```
+description
 ```
+
 :::
 
-### 带有 icon 和辅助性文字介绍
+## 带图标和描述
 
-:::demo 最后，这是一个同时具有 icon 和辅助性文字的样例。
+:::demo 在最后, 这是一个带有图标和描述的例子。
+
 ```
+icon-description
 ```
+
 :::
 
-### Attributes
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| title     | 标题           | string | — | — |
-| type | 主题 | string | success/warning/info/error | info |
-| description | 辅助性文字。也可通过默认 slot 传入 | string | — | — |
-| closable | 是否可关闭 | boolean | — | true |
-| center | 文字是否居中 | boolean | — | true |
-| close-text | 关闭按钮自定义文本 | string | — | — |
-| show-icon | 是否显示图标 | boolean | — | false |
-| effect | 选择提供的主题 | string | light/dark | light |
+## Alert API
 
-### Slot
+### 属性
 
-| Name | Description |
-|------|--------|
-| — | 描述 |
-| title | 标题的内容 |
+| 名称          | 说明        | 类型                                                      | 默认值   |
+| ----------- | --------- | ------------------------------------------------------- | ----- |
+| title       | Alert 标题。 | ^[string]                                               | —     |
+| type        | Alert 类型。 | ^[enum]`'success' \| 'warning' \| 'info' \| 'error'` | info  |
+| description | 描述性文本     | ^[string]                                               | —     |
+| closable    | 是否可以关闭    | ^[boolean]                                              | true  |
+| center      | 文字是否居中    | ^[boolean]                                              | false |
+| close-text  | 自定义关闭按钮文本 | ^[string]                                               | —     |
+| show-icon   | 是否显示类型图标  | ^[boolean]                                              | false |
+| effect      | 主题样式      | ^[enum]`'light' \| 'dark'`                             | light |
 
 ### Events
-| 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| close | 关闭alert时触发的事件 | — |
+
+| 名称    | 描述              | 类型                                          |
+| ----- | --------------- | ------------------------------------------- |
+| close | 关闭 Alert 时触发的事件 | ^[Function]`(event: MouseEvent) => void` |
+
+### Slots
+
+| 名称      | 描述         |
+| ------- | ---------- |
+| default | Alert 内容描述 |
+| title   | 标题的内容      |

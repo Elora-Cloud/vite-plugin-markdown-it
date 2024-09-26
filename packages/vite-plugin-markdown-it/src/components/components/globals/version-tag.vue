@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-defineProps<{
-  version: string
-}>()
 defineOptions({
   name: 'EloraVersionTag',
-})
+});
+defineProps<{
+  version: string
+}>();
 </script>
 
 <template>

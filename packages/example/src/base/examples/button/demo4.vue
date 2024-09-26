@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { ArrowLeft, Delete, Edit, Share } from '@element-plus/icons-vue'
+import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue';
 </script>
 
 <template>
-  <div class="demo">
-    <el-button-group>
-      <el-button type="primary" :icon="ArrowLeft">
-        上一页
-      </el-button>
-      <el-button type="primary">
-        下一页
-        <el-icon><ElIconArrowRight /></el-icon>
-      </el-button>
-    </el-button-group>
-    <el-button-group style="margin-left: 15px;">
-      <el-button type="primary" :icon="Edit" />
-      <el-button type="primary" :icon="Share" />
-      <el-button type="primary" :icon="Delete" />
-    </el-button-group>
+  <div>
+    <el-button type="primary" :icon="Edit" />
+    <el-button type="primary" :icon="Share" />
+    <el-button type="primary" :icon="Delete" />
+    <el-button type="primary" :icon="Search">
+      Search
+    </el-button>
+    <el-button type="primary">
+      Upload<el-icon class="el-icon--right">
+        <Upload />
+      </el-icon>
+    </el-button>
   </div>
 </template>

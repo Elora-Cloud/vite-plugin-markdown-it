@@ -14,12 +14,10 @@
 * `markdown-it-emoji`
 * `markdown-it-toc-done-right`
 
-
-
 ## 启动
 
 ```bash
-pnpm i 
+pnpm i
 
 pnpm run build
 

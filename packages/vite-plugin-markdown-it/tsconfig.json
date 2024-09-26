@@ -1,25 +1,25 @@
 {
-    "extends": "@mistjs/tsconfig-vue",
-    "include": ["src/components/**/*.ts","src/components//**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }],
-    "compilerOptions": {
-        "baseUrl": ".", //用于解析非绝对模块名的基本目录，相对模块不受影响。
-        "target": "ESNext",
-        "useDefineForClassFields": true,
-        "module": "ESNext",
-        "isolatedModules": true,
-        "skipLibCheck": true,
-        "resolveJsonModule": true,
-        "lib": ["dom","ESNext"],
-        "moduleResolution": "node", //指定模块解析策略，node或classic
-        "noEmit": true,
-        "typeRoots": ["node_modules/@types"], // 指定声明文件或文件夹的路径列表
+  "extends": "@mistjs/tsconfig-vue",
+  "compilerOptions": { // 用于解析非绝对模块名的基本目录，相对模块不受影响。
+    "target": "ESNext",
+    "lib": ["dom", "ESNext"],
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types"], // 指定声明文件或文件夹的路径列表
 
-        /* Linting */
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
-    },
+    /* Linting */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true, // 指定模块解析策略，node或classic
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "include": ["src/components/**/*.ts", "src/components//**/*.vue"]
 
 }

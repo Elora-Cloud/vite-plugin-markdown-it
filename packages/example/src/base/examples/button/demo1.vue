@@ -1,51 +1,46 @@
+<script setup lang="ts">
+</script>
+
 <template>
-  <div class="demo">
-    <el-row>
-      <el-button disabled>
-        默认按钮
-      </el-button>
-      <el-button type="primary" disabled>
-        主要按钮
-      </el-button>
-      <el-button type="success" disabled>
-        成功按钮
-      </el-button>
-      <el-button type="info" disabled>
-        信息按钮
-      </el-button>
-      <el-button type="warning" disabled>
-        警告按钮
-      </el-button>
-      <el-button type="danger" disabled>
-        危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button plain disabled>
-        朴素按钮
-      </el-button>
-      <el-button type="primary" plain disabled>
-        主要按钮
-      </el-button>
-      <el-button type="success" plain disabled>
-        成功按钮
-      </el-button>
-      <el-button type="info" plain disabled>
-        信息按钮
-      </el-button>
-      <el-button type="warning" plain disabled>
-        警告按钮
-      </el-button>
-      <el-button type="danger" plain disabled>
-        危险按钮
-      </el-button>
-    </el-row>
+  <div class="mb-4">
+    <el-button disabled>
+      Default
+    </el-button>
+    <el-button type="primary" disabled>
+      Primary
+    </el-button>
+    <el-button type="success" disabled>
+      Success
+    </el-button>
+    <el-button type="info" disabled>
+      Info
+    </el-button>
+    <el-button type="warning" disabled>
+      Warning
+    </el-button>
+    <el-button type="danger" disabled>
+      Danger
+    </el-button>
+  </div>
+
+  <div>
+    <el-button plain disabled>
+      Plain
+    </el-button>
+    <el-button type="primary" plain disabled>
+      Primary
+    </el-button>
+    <el-button type="success" plain disabled>
+      Success
+    </el-button>
+    <el-button type="info" plain disabled>
+      Info
+    </el-button>
+    <el-button type="warning" plain disabled>
+      Warning
+    </el-button>
+    <el-button type="danger" plain disabled>
+      Danger
+    </el-button>
   </div>
 </template>
-
-<style scoped lang="scss">
-  .demo :deep(.el-row){
-    box-sizing: border-box;
-    margin-top: 10px;
-  }
-</style>

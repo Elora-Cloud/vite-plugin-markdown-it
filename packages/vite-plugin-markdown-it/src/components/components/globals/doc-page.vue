@@ -6,17 +6,17 @@
 */
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useActiveSidebarLinks } from '../utils/active-bar'
+import { ref } from 'vue';
+import { useActiveSidebarLinks } from '../../utils/active-bar';
 
-defineProps<{ tocWrapperClass: string }>()
 defineOptions({
   name: 'EloraDocPage',
-})
-const marker = ref()
-const container = ref()
+});
+defineProps<{ tocWrapperClass: string }>();
+const marker = ref();
+const container = ref();
 
-useActiveSidebarLinks(container, marker)
+useActiveSidebarLinks(container, marker);
 </script>
 
 <template>

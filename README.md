@@ -16,7 +16,7 @@ The default plugins that integrate markdown it are as follows:
 ## Start
 
 ```bash
-pnpm i 
+pnpm i
 
 pnpm run build
 
@@ -31,4 +31,3 @@ visit [http://localhost:5173](http://localhost:5173)
 ## Example Usage
 
 See the [example](./example) app in this repo.
-

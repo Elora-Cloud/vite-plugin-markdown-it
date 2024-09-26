@@ -1,11 +1,14 @@
 import type {
-  Options, PluginSimple, PluginWithOptions, PluginWithParams,
-} from 'markdown-it'
+  Options,
+  PluginSimple,
+  PluginWithOptions,
+  PluginWithParams,
+} from 'markdown-it';
 
 export interface QueryParamer {
   fence: boolean
   componentIndex: number
-  fileName: string
+  filePath: string
 }
 /**
  * 使用自定义markdownit插件

@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import Inspect from 'vite-plugin-inspect'
-import components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import dts from 'vite-plugin-dts'
-import IconsResolver from 'unplugin-icons/resolver'
-import { generateExternal } from './scripts/rollup'
+import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
+import Inspect from 'vite-plugin-inspect';
+import { generateExternal } from './scripts/rollup';
 
 export default defineConfig({
   build: {
@@ -71,4 +71,4 @@ export default defineConfig({
       deep: true,
     }),
   ],
-})
+});

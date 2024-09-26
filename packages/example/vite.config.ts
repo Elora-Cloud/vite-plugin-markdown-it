@@ -1,12 +1,12 @@
-import { fileURLToPath } from 'url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import Inspect from 'vite-plugin-inspect'
-import components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core'
-import IconsResolver from 'unplugin-icons/resolver'
+import { fileURLToPath } from 'node:url';
+import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core';
+import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
+import Inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
   build: {
@@ -49,4 +49,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-})
+});
