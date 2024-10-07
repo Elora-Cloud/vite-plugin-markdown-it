@@ -8,17 +8,17 @@ import { normalizePath } from 'vite';
 import Cache from './cache';
 import config from './config';
 
+// md cache
+const cacheObj: Cache = new Cache();
+
 export class Parser {
   public readonly config: ResolvedConfig;
 
   public readonly options: UserOptions;
 
-  public cache: Cache;
-
   constructor(config: ResolvedConfig, options: UserOptions) {
     this.config = config;
     this.options = options;
-    this.cache = new Cache();
   }
 
   public async parseMarkdown(source: string, id: string, queryParamer: QueryParamer) {
@@ -67,14 +67,14 @@ export class Parser {
     config(md, this.options, () => {
       // const request = `${filePathTmp}block${componentIndex}-${fileName}?fence&componentIndex=${componentIndex++}`;
       // get cache names
-      const exampleName = this.cache.getExampleNamesCache()[componentIndex++];
+      const exampleName = cacheObj.getExampleNamesCache()[componentIndex++];
       const componentName = exampleName.name;
       const request = `./examples/${fileName.split('.md')[0]}/${exampleName.demoName}`;
       // import component
       srciptImport += `import ${componentName} from '${request}';\n`;
       return componentName;
     }, () => {
-      return this.cache.getExampleCodeCache(id, componentIndex);
+      return cacheObj.getExampleCodeCache(id, componentIndex);
     }, (res) => { toc_source = res; });
 
     // markdownit convert md fiele to html file
@@ -103,21 +103,20 @@ export class Parser {
   }
 
   public async transform(code: string, id: string, queryParamer: QueryParamer) {
-    const renderCodeCache = this.cache.getRenderCodeCache(id);
+    const renderCodeCache = cacheObj.getRenderCodeCache(id);
     if (renderCodeCache)
       return renderCodeCache;
-
-    const result = await this.parseMarkdown(code, id, queryParamer);
     // 第一次解析，缓存渲染结果
-    this.cache.resetExampleCache(id);
+    // cacheObj.resetExampleCache(id);
     const { base, dir } = parse(queryParamer.filePath);
-    this.cache.setCurrentFile(id, base, dir);
-    this.cache.setRenderCodeCache(id, result);
+    cacheObj.setCurrentFile(id, base, dir);
+    const result = await this.parseMarkdown(code, id, queryParamer);
+    cacheObj.setRenderCodeCache(id, result);
     return result;
   }
 
   public async load(id: string, queryParamer: QueryParamer) {
-    const sourceCodeCache = this.cache.getSourceCodeCache(id);
+    const sourceCodeCache = cacheObj.getSourceCodeCache(id);
     if (sourceCodeCache)
       return sourceCodeCache;
     const resourcePath = queryParamer.filePath;
@@ -126,8 +125,8 @@ export class Parser {
     const demoReg = new RegExp(`:::${this.options.containerName || 'demo'}[\\s\\S]*?:::`, 'gi');
     let index = 0;
     // 第一次解析，缓存渲染结果
-    this.cache.resetExampleCache(id);
-    this.cache.setCurrentFile(id, base, dir);
+    cacheObj.resetExampleCache(id);
+    cacheObj.setCurrentFile(id, base, dir);
     const resultCode = result.replace(demoReg, (matches) => {
       const blockCode = matches.replace(/```[\s\S]*?```/, (t) => {
         const blockPath = t.replaceAll('```', '').trim();
@@ -138,12 +137,12 @@ export class Parser {
           blockFileName = `demo${index++}.vue`;
 
         const code = fs.readFileSync(join(dir, 'examples', name, blockFileName), 'utf-8');
-        this.cache.setExampleCodeCache(code, blockFileName);
+        cacheObj.setExampleCodeCache(code, blockFileName);
         return `\`\`\`html \n${code}\n\`\`\``;
       });
       return blockCode;
     });
-    this.cache.setSourceCodeCache(id, resultCode);
+    cacheObj.setSourceCodeCache(id, resultCode);
     return resultCode;
   }
 }
