@@ -42,6 +42,10 @@ export default defineConfig({
 ```ts
 import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/components';
 import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/style.css';
+// scss
+import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/components/style/index';
+// css
+// import '@elora-cloud/vite-plugin-markdown-it/dist/components/es/components/style/css';
 
 const app = createApp(App);
 app.use(VitePluginMarkdownIt);

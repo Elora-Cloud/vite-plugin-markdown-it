@@ -30,7 +30,9 @@ export default defineConfig({
       // dirs: ['src/utils'], // 配置自动导入的目录
       dts: './types/auto-import.d.ts',
       resolvers: [
-        ElementPlusResolver(),
+        ElementPlusResolver({
+          importStyle: 'scss',
+        }),
         IconsResolver({
           prefix: 'Icon',
         }),
@@ -38,7 +40,9 @@ export default defineConfig({
     }),
     components({
       dts: 'types/components.d.ts',
-      resolvers: [ElementPlusResolver(), IconsResolver({
+      resolvers: [ElementPlusResolver({
+        importStyle: 'scss',
+      }), IconsResolver({
         enabledCollections: ['ep'],
       })],
       deep: true,

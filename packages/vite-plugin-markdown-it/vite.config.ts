@@ -16,7 +16,7 @@ export default defineConfig({
     minify: true,
     // 这一块是不会被使用的
     lib: {
-      entry: 'src/components/index.ts',
+      entry: ['src/components/index.ts', 'src/components/components/style/css.ts', 'src/components/components/style/index.ts'],
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
@@ -24,7 +24,7 @@ export default defineConfig({
       external: await generateExternal({
         full: true,
       }),
-      input: ['src/components/index.ts'],
+      input: ['src/components/index.ts', 'src/components/components/style/css.ts', 'src/components/components/style/index.ts'],
       output: [
         // esm
         {
@@ -56,7 +56,9 @@ export default defineConfig({
       // dirs: ['src/utils'], // 配置自动导入的目录
       dts: './types/auto-import.d.ts',
       resolvers: [
-        ElementPlusResolver(),
+        ElementPlusResolver({
+          importStyle: false,
+        }),
         IconsResolver({
           prefix: 'Icon',
         }),
@@ -65,7 +67,9 @@ export default defineConfig({
     components({
       dirs: ['src/components/'],
       dts: 'types/components.d.ts',
-      resolvers: [ElementPlusResolver(), IconsResolver({
+      resolvers: [ElementPlusResolver({
+        importStyle: false,
+      }), IconsResolver({
         enabledCollections: ['ep'],
       })],
       deep: true,
