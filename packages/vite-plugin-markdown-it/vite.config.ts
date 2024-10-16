@@ -21,9 +21,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: await generateExternal({
-        full: true,
-      }),
+      external: generateExternal({ full: true }),
       input: ['src/components/index.ts', 'src/components/components/style/css.ts', 'src/components/components/style/index.ts'],
       output: [
         // esm

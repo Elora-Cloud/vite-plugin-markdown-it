@@ -16,12 +16,15 @@ export function getPackageDependencies(pkgPath: string): Record<'dependencies' |
   };
 }
 
-export async function generateExternal(options: { full: boolean }) {
+/**
+ * if options.full external all dependencies
+ */
+export function generateExternal(options: { full: boolean } = { full: false }) {
   const { dependencies, peerDependencies } = pkg;
 
   return (id: string) => {
     const packages: string[] = [...Object.keys(peerDependencies)];
-    if (!options.full)
+    if (options.full)
       packages.push('@vue', ...Object.keys(dependencies));
 
     return [...new Set(packages)].some(pkg => id === pkg || id.startsWith(`${pkg}/`));

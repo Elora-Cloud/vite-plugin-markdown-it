@@ -40,9 +40,7 @@ export default defineConfig({
     minify: true,
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: await generateExternal({
-        full: true,
-      }),
+      external: generateExternal(),
       output: {
         exports: 'named',
         globals: {
