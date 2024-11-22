@@ -1,7 +1,7 @@
 {
   "name": "@elora-cloud/vite-plugin-markdown-it",
   "type": "module",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "private": false,
   "packageManager": "pnpm@9.0.6",
   "description": "this is base vite parser markdown for markdown-it",
