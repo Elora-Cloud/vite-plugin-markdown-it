@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineOptions({
-  name: 'EloraVersionTag',
+  name: 'DocVersionTag',
 });
 defineProps<{
   version: string

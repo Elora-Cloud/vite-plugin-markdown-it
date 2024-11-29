@@ -30,25 +30,25 @@
   },
   "dependencies": {
     "@elora-cloud/vite-plugin-markdown-it": "workspace:*",
-    "element-plus": "^2.8.3",
+    "element-plus": "^2.8.8",
     "highlight.js": "^11.10.0"
   },
   "devDependencies": {
     "@mistjs/tsconfig-vue": "^1.1.2",
-    "@types/node": "^22.7.2",
+    "@types/node": "^22.10.1",
     "@types/uniqid": "^5.3.4",
-    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue": "^5.2.1",
     "changelogen": "^0.5.7",
-    "eslint": "^9.11.1",
+    "eslint": "^9.15.0",
     "rimraf": "^6.0.1",
-    "sass": "^1.79.3",
-    "typescript": "^5.6.2",
-    "unplugin-auto-import": "^0.18.3",
-    "unplugin-icons": "^0.19.3",
-    "unplugin-vue-components": "^0.27.4",
-    "vite": "^5.4.8",
-    "vite-plugin-inspect": "^0.8.7",
-    "vitest": "^2.1.1",
-    "vue-tsc": "^2.1.6"
+    "sass": "^1.81.0",
+    "typescript": "^5.7.2",
+    "unplugin-auto-import": "^0.18.6",
+    "unplugin-icons": "^0.20.2",
+    "unplugin-vue-components": "^0.27.5",
+    "vite": "^6.0.1",
+    "vite-plugin-inspect": "^0.10.1",
+    "vitest": "^2.1.6",
+    "vue-tsc": "^2.1.10"
   }
 }

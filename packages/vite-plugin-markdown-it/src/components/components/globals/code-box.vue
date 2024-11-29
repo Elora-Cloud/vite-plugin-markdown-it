@@ -10,7 +10,7 @@ import { useClipboard } from '@vueuse/core';
 import { onMounted, ref, useSlots } from 'vue';
 
 defineOptions({
-  name: 'EloraCodeBox',
+  name: 'DocCodeBox',
 });
 const props = defineProps<{ rawSource?: string }>();
 const showText = ref('显示代码');

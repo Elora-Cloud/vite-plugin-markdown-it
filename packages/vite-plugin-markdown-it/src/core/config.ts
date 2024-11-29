@@ -95,11 +95,11 @@ export default function config(
         let explain = '';
         if (description !== '')
           explain = `<template v-slot:explain>${md.render(description)}</template>`;
-        return `<EloraCodeBox rawSource="${encodeURIComponent(getExampleSourceCode())}">${explain}<template v-slot:demo> <${componentName}/></template>`;
+        return `<DocCodeBox rawSource="${encodeURIComponent(getExampleSourceCode())}">${explain}<template v-slot:demo> <${componentName}/></template>`;
       }
 
       // close tag
-      return '</EloraCodeBox>\n';
+      return '</DocCodeBox>\n';
     },
   });
   md.use(container, 'tip');

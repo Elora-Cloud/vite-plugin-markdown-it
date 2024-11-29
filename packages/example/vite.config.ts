@@ -31,7 +31,7 @@ export default defineConfig({
       dts: './types/auto-import.d.ts',
       resolvers: [
         ElementPlusResolver({
-          importStyle: 'scss',
+          importStyle: 'sass',
         }),
         IconsResolver({
           prefix: 'Icon',
@@ -41,7 +41,7 @@ export default defineConfig({
     components({
       dts: 'types/components.d.ts',
       resolvers: [ElementPlusResolver({
-        importStyle: 'scss',
+        importStyle: 'sass',
       }), IconsResolver({
         enabledCollections: ['ep'],
       })],

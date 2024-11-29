@@ -1,12 +1,12 @@
 import { withInstall } from '../../utils/util';
-import eloraApiTyping from './api-typing.vue';
-import eloraCodeBox from './code-box.vue';
-import eloraDocPage from './doc-page.vue';
-import eloraVersionTag from './version-tag.vue';
+import docApiTyping from './api-typing.vue';
+import docCodeBox from './code-box.vue';
+import docDocPage from './doc-page.vue';
+import docVersionTag from './version-tag.vue';
 
-export const EloraCodeBox = withInstall(eloraCodeBox);
-export const EloraDocPage = withInstall(eloraDocPage);
-export const EloraVersionTag = withInstall(eloraVersionTag);
-export const EloraApiTyping = withInstall(eloraApiTyping);
+export const DocCodeBox = withInstall(docCodeBox);
+export const DocDocPage = withInstall(docDocPage);
+export const DocVersionTag = withInstall(docVersionTag);
+export const DocApiTyping = withInstall(docApiTyping);
 
-export const globalComponents = [EloraCodeBox, EloraDocPage, EloraVersionTag, EloraApiTyping];
+export const globalComponents = [DocCodeBox, DocDocPage, DocVersionTag, DocApiTyping];

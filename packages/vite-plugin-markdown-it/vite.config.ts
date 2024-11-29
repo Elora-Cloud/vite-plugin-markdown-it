@@ -16,6 +16,7 @@ export default defineConfig({
     minify: true,
     // 这一块是不会被使用的
     lib: {
+      cssFileName: 'style',
       entry: ['src/components/index.ts', 'src/components/components/style/css.ts', 'src/components/components/style/index.ts'],
       formats: ['es', 'cjs'],
     },

@@ -4,7 +4,7 @@ export default (md: MarkdownIt): void => {
   md.renderer.rules.tooltip = (tokens, idx) => {
     const token = tokens[idx];
 
-    return `<elora-api-typing type="${token.content}" details="${token.info}" />`;
+    return `<doc-api-typing type="${token.content}" details="${token.info}" />`;
   };
 
   md.inline.ruler.before('emphasis', 'tooltip', (state, silent) => {

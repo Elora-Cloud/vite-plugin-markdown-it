@@ -90,9 +90,9 @@ export class Parser {
              <div class="${demoWrapperClass}">
                   ${code}
               </div>
-              <EloraDocPage tocWrapperClass="${tocWrapperClass}">
+              <DocDocPage tocWrapperClass="${tocWrapperClass}">
                 ${toc_source}
-               </EloraDocPage>
+               </DocDocPage>
           </div>
         </template>
         <script setup>

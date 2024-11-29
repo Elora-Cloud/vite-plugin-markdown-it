@@ -10,7 +10,7 @@ import { ref } from 'vue';
 import { useActiveSidebarLinks } from '../../utils/active-bar';
 
 defineOptions({
-  name: 'EloraDocPage',
+  name: 'DocDocPage',
 });
 defineProps<{ tocWrapperClass: string }>();
 const marker = ref();

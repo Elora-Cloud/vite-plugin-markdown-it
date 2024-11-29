@@ -2,7 +2,7 @@
 import { Warning } from '@element-plus/icons-vue';
 
 defineOptions({
-  name: 'EloraApiTyping',
+  name: 'DocApiTyping',
 });
 defineProps({
   type: String,
