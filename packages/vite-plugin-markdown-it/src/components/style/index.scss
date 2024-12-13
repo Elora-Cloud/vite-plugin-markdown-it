@@ -19,6 +19,10 @@
   --code-tooltip-bg-color: var(--code-bg-color);
   --purple-color: #6222c2;
   --purple-color-light: #9065db;
+  --toc-code-line-height: 22.5px;
+  --toc-code-line-weight: 400;
+  --toc-code-font-size: 14px;
+  --toc-code-font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 .doc-content-wrapper {
   display: flex;
@@ -102,7 +106,16 @@
 .hljs {
   margin: 0;
 }
-
+.code-box-code{
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+  line-height: var(--toc-code-line-height);
+  font-size: var(--toc-code-font-size);
+  font-family: var(--toc-code-font-family);
+  font-weight: var(--toc-code-line-weight);
+  transition: color .5s;
+}
 .page-content {
   width: var(--elora-content-width);
   flex: 1;

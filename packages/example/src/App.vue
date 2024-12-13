@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/github.css';
 
 defineOptions({
   name: 'TButton',

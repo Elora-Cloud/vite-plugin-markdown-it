@@ -29,7 +29,7 @@ export class Parser {
       if (lang && hljs.getLanguage(lang)) {
         // 使用 highlight.js 实现代码高亮
         try {
-          return `<pre v-pre class="hljs"><code>${hljs.highlight(str, { language: lang, ignoreIllegals: true }).value}</code></pre>`;
+          return `<pre v-pre class="hljs"><code class="code-box-code">${hljs.highlight(str, { language: lang, ignoreIllegals: true }).value}</code></pre>`;
         }
         catch (error) {
           console.error(error);
