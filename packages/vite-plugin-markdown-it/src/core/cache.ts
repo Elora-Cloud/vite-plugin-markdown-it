@@ -6,7 +6,7 @@ interface ICacheName {
   /**
    * 编号
    */
-  id: string
+  id: number
   /**
    * demo组件名
    */

@@ -19,9 +19,9 @@
       "require": "./dist/core/index.cjs"
     },
     "./core": {
-      "types": "./dist/core/index.d.ts",
-      "import": "./dist/core/index.mjs",
-      "require": "./dist/core/index.cjs"
+      "types": "./dist/core/es/core/index.d.ts",
+      "import": "./dist/core/es/core/index.mjs",
+      "require": "./dist/core/lib/core/index.cjs"
     },
     "./components": {
       "types": "./dist/components/es/index.d.ts",
@@ -59,7 +59,7 @@
     "changelog": "elora changelog",
     "release": "elora release",
     "build": "rimraf -rf /dist && pnpm run build:core && pnpm run build:components && pnpm run build:bundle",
-    "build:core": "rimraf -rf /dist/core && unbuild",
+    "build:core": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "build:components": "rimraf -rf /dist/components && vite build",
     "build:bundle": "rimraf -rf /dist/components/dist && vite build --config vite.config.bundle.ts"
   },
@@ -71,7 +71,6 @@
     "vue": "^3.5.2"
   },
   "dependencies": {
-    "@toycode/markdown-it-class": "^1.2.4",
     "highlight.js": "^11.10.0",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
@@ -82,6 +81,9 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
+    "rollup": "^4.27.4",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "rollup-plugin-typescript2": "^0.36.0",
     "@elora-cloud/elora-cli": "^1.0.8",
     "@mistjs/tsconfig-vue": "^1.1.2",
     "@pnpm/types": "^12.2.0",
@@ -95,7 +97,6 @@
     "rimraf": "^6.0.1",
     "sass": "^1.81.0",
     "typescript": "^5.7.2",
-    "unbuild": "^2.0.0",
     "unplugin-auto-import": "^0.18.6",
     "unplugin-icons": "^0.20.2",
     "unplugin-vue-components": "^0.27.5",

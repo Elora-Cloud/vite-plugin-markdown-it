@@ -7,11 +7,11 @@
 
 import type MarkdownIt from 'markdown-it';
 import type { UserOptions } from './typing';
-import classes from '@toycode/markdown-it-class';
 import markdownItAnchor from 'markdown-it-anchor';
 import container from 'markdown-it-container';
 import { full as emoji } from 'markdown-it-emoji';
 import markdownItTocDoneRight from 'markdown-it-toc-done-right';
+import classes from '../plugins/markdown-it-class';
 import tag from '../plugins/tag';
 
 import tooltip from '../plugins/tooltip';
@@ -72,10 +72,10 @@ export default function config(
     itemClass: 'toc-item',
     linkClass: 'toc-link',
     listType: 'ul',
-    slugify(s) {
+    slugify(s: string) {
       return String(s).trim().toLowerCase().replace(/\s+/g, '-');
     },
-    callback: (res) => {
+    callback: (res: any) => {
       if (res !== '<nav class="toc-content"></nav>')
         setTocSource(res.replace('<nav class="toc-content">', '').replace('</nav>', ''));
     },
