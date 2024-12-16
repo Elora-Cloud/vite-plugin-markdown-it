@@ -1,13 +1,13 @@
 {
   "compilerOptions": { // 用于解析非绝对模块名的基本目录，相对模块不受影响。
-    "target": "ESNext",
-    "lib": ["dom", "ESNext"],
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
     "useDefineForClassFields": true,
     "baseUrl": ".",
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "./shime.d.ts"], // 指定声明文件或文件夹的路径列表
+    "typeRoots": ["node_modules/@types", "./types"], // 指定声明文件或文件夹的路径列表
 
     /* Linting */
     "strict": true,
@@ -19,6 +19,6 @@
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/components/**/*.ts", "src/components/**/*.vue"]
+  "include": ["src/components/**/*.ts", "src/components/**/*.vue", "./types"]
 
 }

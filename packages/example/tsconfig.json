@@ -8,7 +8,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types"], // 指定声明文件或文件夹的路径列表
+    "typeRoots": ["node_modules/@types", "./types"], // 指定声明文件或文件夹的路径列表
 
     /* Linting */
     "strict": true,
@@ -20,5 +20,5 @@
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "./types"]
 }
