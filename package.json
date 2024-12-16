@@ -22,11 +22,11 @@
     "build": "pnpm --filter=vite-plugin-markdown-it build"
   },
   "devDependencies": {
-    "@elora-cloud/elora-cli": "^1.0.8",
-    "@elora-cloud/eslint-config": "^3.6.2",
-    "eslint": "^9.15.0",
+    "@elora-cloud/elora-cli": "^1.0.9",
+    "@elora-cloud/eslint-config": "^3.11.2",
+    "eslint": "^9.17.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10"
+    "lint-staged": "^15.2.11"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue}": "eslint . --fix"
