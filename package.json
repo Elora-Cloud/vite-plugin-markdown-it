@@ -16,6 +16,9 @@
     "pnpm": "^9"
   },
   "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix",
     "example:dev": "pnpm --filter=vite-plugin-markdown-it-example dev",
     "test": "pnpm --filter=vite-plugin-markdown-it test",
     "typecheck": "pnpm --filter=vite-plugin-markdown-it typecheck",
@@ -29,6 +32,7 @@
     "lint-staged": "^15.2.11"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,vue}": "eslint . --fix"
+    "*.{ts,tsx,js,vue}": "eslint . --fix",
+    "*.{sass,scss}": "stylelint --allow-empty-input --custom-syntax --fix"
   }
 }
