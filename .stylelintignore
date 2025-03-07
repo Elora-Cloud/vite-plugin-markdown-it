@@ -1,0 +1,9 @@
+*.js
+*.ts
+*.json
+**.md
+
+node_modules
+types
+tests
+packages/*/dist/
