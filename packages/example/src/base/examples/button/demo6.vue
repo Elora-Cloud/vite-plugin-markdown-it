@@ -23,7 +23,7 @@ import { Eleme } from '@element-plus/icons-vue';
             A 15 15, 0, 1, 1, 27.99 7.5
             L 15 15
           "
-            style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"
+            style="stroke-width: 4px; fill: rgb(0 0 0 / 0%)"
           />
         </svg>
       </div>
@@ -39,6 +39,7 @@ import { Eleme } from '@element-plus/icons-vue';
   height: 18px;
   animation: loading-rotate 2s linear infinite;
 }
+
 .el-button .custom-loading .circular .path {
   animation: loading-dash 1.5s ease-in-out infinite;
   stroke-dasharray: 90, 150;

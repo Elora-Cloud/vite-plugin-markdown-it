@@ -147,7 +147,6 @@ async function copyCode() {
 
 <style lang="scss" scoped>
 .code-box {
-
   border: 1px solid var(--el-border-color);
   border-radius: var(--el-border-radius-base);
 
@@ -164,6 +163,7 @@ async function copyCode() {
     height: auto;
     overflow: hidden;
     transition: height 0.2s;
+
     /* border: 1px dotted #d8d8d8; */
     border-bottom-width: 0;
     background-color: var(--toc-component-bg-color);
@@ -254,8 +254,9 @@ async function copyCode() {
     transition: .2s;
 
   }
+
   .m-0 {
-    margin: 0rem;
+    margin: 0;
   }
 }
 </style>

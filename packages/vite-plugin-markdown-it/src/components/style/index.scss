@@ -22,11 +22,13 @@
   --toc-code-line-height: 22.5px;
   --toc-code-line-weight: 400;
   --toc-code-font-size: 14px;
-  --toc-code-font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --toc-code-font-family: "JetBrains Mono", source-code-pro, menlo, monaco, consolas, "Courier New", monospace;
 }
+
 .doc-content-wrapper {
   display: flex;
   color: var(--toc-text-color-lighter);
+
   :not(pre) > code {
     border-radius: 4px;
     padding: 0.15rem 0.5rem;
@@ -93,6 +95,7 @@
       }
     }
   }
+
   details {
     summary {
       margin: 16px 0;
@@ -107,6 +110,7 @@
   margin: 0;
   background-color: #f5f7fa;
 }
+
 .code-box-code{
   display: block;
   width: fit-content;
@@ -116,8 +120,9 @@
   font-family: var(--toc-code-font-family);
   font-weight: var(--toc-code-line-weight);
   transition: color .5s;
-  padding: 20px 20px;
+  padding: 20px;
 }
+
 .page-content {
   width: var(--elora-content-width);
   flex: 1;
@@ -243,10 +248,6 @@
 .page-content [type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
-}
-
-.page-content * {
-  box-sizing: border-box;
 }
 
 .page-content-a {
@@ -833,7 +834,7 @@
 }
 
 .page-content-li {
-  word-wrap: break-all;
+  word-wrap: break-word;
 }
 
 .page-content-li > .page-content-p {
@@ -951,7 +952,7 @@
 
 .page-content-pre .page-content-code {
   display: inline;
-  max-width: auto;
+  max-width: unset;
   padding: 0;
   margin: 0;
   overflow: visible;
@@ -974,8 +975,7 @@
 }
 
 .page-content .blob-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
 }
 
 .page-content .blob-wrapper-embedded {
@@ -1117,6 +1117,7 @@
   border-left: 5px solid var(--el-color-primary);
   margin: 20px 0;
 }
+
 .warning {
   padding: 8px 16px;
   background-color: var(--block-warning-bg-color);
@@ -1128,6 +1129,7 @@
 .elora-tag {
   --elora-tag-color: var(--el-color-primary);
   --elora-tag-border-color: var(--el-color-primary);
+
   display: inline-block;
   padding: 0 7px;
   border-radius: 10px;
@@ -1141,14 +1143,17 @@
     --elora-tag-color: var(--el-color-danger);
     --elora-tag-border-color: var(--el-color-danger);
   }
+
   &.deprecated {
     --elora-tag-color: var(--el-color-warning);
     --elora-tag-border-color: var(--el-color-warning);
   }
+
   &.a11y {
     --elora-tag-color: var(--purple-color);
     --elora-tag-border-color: var(--purple-color-light);
   }
+
   &.required {
     --elora-tag-color: var(--el-color-success);
     --elora-tag-border-color: var(--el-color-success);

@@ -6,8 +6,9 @@
   "author": "Mumulx",
   "license": "Apache-2.0",
   "repository": {
-    "type": "gitee",
-    "url": "https://gitee.com/Elora_Cloud/vite-plugin-markdown-it"
+    "type": "git",
+    "url": "git+https://github.com/Elora-Cloud/vite-plugin-markdown-it.git",
+    "directory": "packages/example"
   },
   "keywords": [],
   "exports": {},
@@ -30,25 +31,25 @@
   },
   "dependencies": {
     "@elora-cloud/vite-plugin-markdown-it": "workspace:*",
-    "element-plus": "^2.9.1",
+    "element-plus": "^2.9.5",
     "highlight.js": "^11.11.1"
   },
   "devDependencies": {
     "@mistjs/tsconfig-vue": "^1.1.2",
-    "@types/node": "^22.10.3",
+    "@types/node": "^22.13.9",
     "@types/uniqid": "^5.3.4",
     "@vitejs/plugin-vue": "^5.2.1",
-    "changelogen": "^0.5.7",
-    "eslint": "^9.17.0",
+    "changelogen": "^0.6.1",
+    "eslint": "^9.21.0",
     "rimraf": "^6.0.1",
-    "sass": "^1.83.0",
-    "typescript": "^5.7.2",
-    "unplugin-auto-import": "^0.19.0",
-    "unplugin-icons": "^0.22.0",
-    "unplugin-vue-components": "^0.28.0",
-    "vite": "^6.0.6",
-    "vite-plugin-inspect": "^0.10.6",
-    "vitest": "^2.1.8",
-    "vue-tsc": "^2.2.0"
+    "sass": "^1.85.1",
+    "typescript": "^5.8.2",
+    "unplugin-auto-import": "^19.1.1",
+    "unplugin-icons": "^22.1.0",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^6.2.0",
+    "vite-plugin-inspect": "^11.0.0",
+    "vitest": "^3.0.7",
+    "vue-tsc": "^2.2.8"
   }
 }

@@ -16,7 +16,7 @@ import tag from '../plugins/tag';
 
 import tooltip from '../plugins/tooltip';
 
-const classMapping = function classMapping(prefix = 'page-content') {
+function classMapping(prefix = 'page-content') {
   return {
     h1: `${prefix}-h1`,
     h2: `${prefix}-h2`,
@@ -47,7 +47,7 @@ const classMapping = function classMapping(prefix = 'page-content') {
     dl: `${prefix}-dl`,
     dt: `${prefix}-dt`,
   };
-};
+}
 export default function config(
   md: MarkdownIt,
   options: UserOptions,
