@@ -27,7 +27,7 @@
     "build": "pnpm --filter=vite-plugin-markdown-it build"
   },
   "devDependencies": {
-    "@elora-cloud/elora-cli": "^1.0.10",
+    "@elora-cloud/elora-cli": "^1.0.11",
     "@elora-cloud/eslint-config": "^4.5.1",
     "@types/node": "^22.13.9",
     "eslint": "^9.21.0",
