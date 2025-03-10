@@ -1,6 +1,6 @@
-### [v1.0.20](https://github.com/Elora-Cloud/vite-plugin-markdown-it/compare/v1.0.7...v1.0.20)
+### [v1.0.21](https://github.com/Elora-Cloud/vite-plugin-markdown-it/compare/v1.0.7...v1.0.21)
 
-`2025-03-07`
+`2025-03-10`
 
 **release**
 
