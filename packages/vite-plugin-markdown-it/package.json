@@ -58,7 +58,7 @@
     "test": "vitest -u",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "changelog": "elora changelog",
-    "release": "elora release",
+    "release": "elora release --registry https://npm.pkg.github.com",
     "build": "rimraf -rf /dist && pnpm run build:core && pnpm run build:components && pnpm run build:bundle",
     "build:core": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "build:components": "rimraf -rf /dist/components && vite build",
@@ -66,7 +66,7 @@
   },
   "peerDependencies": {
     "@element-plus/icons-vue": "^2.3.1",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^13.0.0",
     "element-plus": "^2.9.1",
     "vite": "^6.0.3",
     "vue": "^3.5.13"
@@ -82,7 +82,7 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
-    "@elora-cloud/elora-cli": "^1.0.10",
+    "@elora-cloud/elora-cli": "^1.0.12",
     "@mistjs/tsconfig-vue": "^1.1.2",
     "@pnpm/types": "^1000.2.1",
     "@rollup/plugin-typescript": "^12.1.2",
