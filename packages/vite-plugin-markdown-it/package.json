@@ -13,6 +13,7 @@
     "directory": "packages/vite-plugin-markdown-it"
   },
   "keywords": [],
+  "style": "dist/components/dist/vue-grid-layout.css",
   "exports": {
     ".": {
       "types": "./dist/core/es/core/index.d.ts",
@@ -56,10 +57,11 @@
   },
   "scripts": {
     "test": "vitest -u",
+    "clean:css": "rimraf -rf dist/components/es/style.css dist/components/lib/style.css",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "changelog": "elora changelog",
     "release": "elora release --registry https://npm.pkg.github.com",
-    "build": "rimraf -rf /dist && pnpm run build:core && pnpm run build:components && pnpm run build:bundle",
+    "build": "rimraf -rf /dist && pnpm run build:core && pnpm run build:components && pnpm run build:bundle && pnpm run clean:css",
     "build:core": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "build:components": "rimraf -rf /dist/components && vite build",
     "build:bundle": "rimraf -rf /dist/components/dist && vite build --config vite.config.bundle.ts"
