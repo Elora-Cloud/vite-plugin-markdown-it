@@ -12,11 +12,11 @@ import { useActiveSidebarLinks } from '../../utils/active-bar';
 defineOptions({
   name: 'DocDocPage',
 });
-defineProps<{ tocWrapperClass: string }>();
+const props = defineProps<{ tocWrapperClass: string, root?: string, offset?: number, linkSelector?: string }>();
 const marker = ref();
 const container = ref();
 
-useActiveSidebarLinks(container, marker);
+useActiveSidebarLinks(container, marker, props.root, props.offset, props.linkSelector);
 </script>
 
 <template>

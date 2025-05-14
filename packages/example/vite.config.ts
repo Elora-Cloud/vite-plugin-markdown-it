@@ -20,7 +20,10 @@ export default defineConfig({
     outDir: 'dist',
   },
   plugins: [
-    VitePluginMarkdownIt(),
+    VitePluginMarkdownIt({
+      offset: 50,
+      linkSelector: '.toc-link',
+    }),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),

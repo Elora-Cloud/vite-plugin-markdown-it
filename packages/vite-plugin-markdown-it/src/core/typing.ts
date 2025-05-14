@@ -49,5 +49,17 @@ export interface UserOptions {
    * custom markdownit plugins
    */
   readonly plugins?: MarkdownItPluginOptions[]
+  /**
+   * scroll root selector
+   */
+  root?: string
+  /**
+   * offset top
+   */
+  offset?: number
 
+  /**
+   * link selector
+   */
+  linkSelector?: string
 }

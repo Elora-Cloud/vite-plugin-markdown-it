@@ -90,7 +90,7 @@ export class Parser {
              <div class="${demoWrapperClass}">
                   ${code}
               </div>
-              <DocDocPage tocWrapperClass="${tocWrapperClass}">
+              <DocDocPage tocWrapperClass="${tocWrapperClass}" root="${this.options.root || ''}" :offset="${this.options.offset || 0}" linkSelector="${this.options.linkSelector || ''}">
                 ${toc_source}
                </DocDocPage>
           </div>

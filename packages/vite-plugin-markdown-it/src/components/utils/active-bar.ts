@@ -3,6 +3,18 @@ import { isClient } from '@vueuse/core';
 
 import { onMounted, onUnmounted, onUpdated } from 'vue';
 
+export function getOffsetTop(el: HTMLElement) {
+  let offset = 0;
+  let parent = el;
+
+  while (parent) {
+    offset += parent.offsetTop;
+    parent = parent.offsetParent as HTMLElement;
+  }
+
+  return offset;
+}
+
 export function throttleAndDebounce(fn: () => any, delay: number) {
   let timeout: ReturnType<typeof setTimeout>;
   let called = false;
@@ -26,12 +38,31 @@ export function throttleAndDebounce(fn: () => any, delay: number) {
 export function useActiveSidebarLinks(
   container: Ref<HTMLElement>,
   marker: Ref<HTMLElement>,
+  root?: string,
+  offset?: number,
+  linkSelector?: string,
 ) {
   if (!isClient)
     return;
 
   const onScroll = throttleAndDebounce(setActiveLink, 150);
-
+  function onLinkClick(e: Event) {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+    const targetId = target!.getAttribute('href')!.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (!targetElement)
+      return;
+    const containerEl = (root && document.querySelector(root)) || window;
+    const scrollEle: HTMLElement = (containerEl === window ? targetElement.ownerDocument.documentElement : containerEl) as any;
+    const distance = Math.abs(getOffsetTop(targetElement) - getOffsetTop(scrollEle));
+    const max = scrollEle.scrollHeight - scrollEle.clientHeight;
+    const to = Math.min(distance - (offset || 0), max);
+    containerEl.scrollTo({
+      top: to,
+      behavior: 'smooth',
+    });
+  }
   function setActiveLink() {
     const sidebarLinks = getSidebarLinks();
     const anchors = getAnchors(sidebarLinks);
@@ -44,10 +75,11 @@ export function useActiveSidebarLinks(
     //   activateLink(anchors[anchors.length - 1].hash)
     //   return
     // }
+    const containerEl = (root && document.querySelector(root)) || window;
     for (let i = 0; i < anchors.length; i++) {
       const anchor = anchors[i];
       const nextAnchor = anchors[i + 1];
-      const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor);
+      const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor, containerEl);
       if (isActive) {
         history.replaceState(
           null,
@@ -91,7 +123,16 @@ export function useActiveSidebarLinks(
 
   onMounted(() => {
     window.requestAnimationFrame(setActiveLink);
-    window.addEventListener('scroll', onScroll);
+    const containerEl = (root && document.querySelector(root)) || window;
+    containerEl.addEventListener('scroll', onScroll);
+    if (linkSelector) {
+      const links = document.querySelectorAll(linkSelector);
+      if (links) {
+        links.forEach((link) => {
+          link.addEventListener('click', onLinkClick);
+        });
+      }
+    }
   });
 
   onUpdated(() => {
@@ -99,7 +140,16 @@ export function useActiveSidebarLinks(
   });
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', onScroll);
+    const containerEl = (root && document.querySelector(root)) || window;
+    containerEl.removeEventListener('scroll', onScroll);
+    if (linkSelector) {
+      const links = document.querySelectorAll(linkSelector);
+      if (links) {
+        links.forEach((link) => {
+          link.removeEventListener('click', onLinkClick);
+        });
+      }
+    }
   });
 }
 
@@ -138,8 +188,9 @@ function isAnchorActive(
   index: number,
   anchor: HTMLAnchorElement,
   nextAnchor: HTMLAnchorElement,
+  containerEl: any,
 ) {
-  const scrollTop = window.scrollY;
+  const scrollTop = containerEl === window ? window.scrollY : containerEl.scrollTop;
   if (index === 0 && scrollTop === 0)
     return [true, null];
 
