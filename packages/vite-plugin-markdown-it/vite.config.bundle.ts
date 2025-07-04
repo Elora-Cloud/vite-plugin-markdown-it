@@ -10,25 +10,30 @@ import Inspect from 'vite-plugin-inspect';
 import { generateExternal } from './scripts/rollup';
 
 export default defineConfig({
-  plugins: [vue({
-    include: [/\.vue$/],
-  }), Inspect(), AutoImport({
-    imports: ['vue', '@vueuse/core', 'vue-router'],
-    dts: './types/auto-import.d.ts',
-    resolvers: [
-      ElementPlusResolver(),
-      IconsResolver({
-        prefix: 'Icon',
-      }),
-    ],
-  }), components({
-    dirs: ['src/components/'],
-    dts: 'types/components.d.ts',
-    resolvers: [ElementPlusResolver(), IconsResolver({
-      enabledCollections: ['ep'],
-    })],
-    deep: true,
-  })],
+  plugins: [
+    vue({
+      include: [/\.vue$/],
+    }),
+    Inspect(),
+    AutoImport({
+      imports: ['vue', '@vueuse/core', 'vue-router'],
+      dts: './types/auto-import.d.ts',
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'Icon',
+        }),
+      ],
+    }),
+    components({
+      dirs: ['src/components/'],
+      dts: 'types/components.d.ts',
+      resolvers: [ElementPlusResolver(), IconsResolver({
+        enabledCollections: ['ep'],
+      })],
+      deep: true,
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

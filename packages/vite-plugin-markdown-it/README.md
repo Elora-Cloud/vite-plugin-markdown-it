@@ -27,6 +27,7 @@ In `vite.config.[t|j]s`:
 import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core';
 import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
+
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -60,12 +61,14 @@ If you're using Typescript than you'll want take the additional step of adding a
 ```ts
 declare module '*.vue' {
   import type { ComponentOptions } from 'vue';
+
   const Component: ComponentOptions;
   export default Component;
 }
 
 declare module '*.md' {
   import type { ComponentOptions } from 'vue';
+
   const Component: ComponentOptions;
   export default Component;
 }

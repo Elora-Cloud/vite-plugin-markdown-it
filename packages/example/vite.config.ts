@@ -10,8 +10,6 @@ import Inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
   build: {
-    // 设置最终构建的浏览器兼容目标
-    target: 'modules',
     minify: true,
     emptyOutDir: false,
     //  chunk 大小警告的限制（以 kb为单位）

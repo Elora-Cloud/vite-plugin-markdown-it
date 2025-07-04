@@ -28,6 +28,7 @@ npm i vite-plugin-markdown-it
 import VitePluginMarkdownIt from '@elora-cloud/vite-plugin-markdown-it/core';
 import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
+
 export default defineConfig({
   plugins: [
     VitePluginMarkdownIt(),
@@ -60,12 +61,14 @@ app.use(VitePluginMarkdownIt);
 ```ts
 declare module '*.vue' {
   import type { ComponentOptions } from 'vue';
+
   const Component: ComponentOptions;
   export default Component;
 }
 
 declare module '*.md' {
   import type { ComponentOptions } from 'vue';
+
   const Component: ComponentOptions;
   export default Component;
 }

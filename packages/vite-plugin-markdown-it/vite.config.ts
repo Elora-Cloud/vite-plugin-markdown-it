@@ -1,16 +1,17 @@
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
+import dts from 'unplugin-dts/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import Inspect from 'vite-plugin-inspect';
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-ignore
 import { generateExternal } from './scripts/rollup';
 
 export default defineConfig({
   build: {
-    target: 'modules',
     outDir: 'dist/components/es',
     emptyOutDir: false,
     minify: true,
