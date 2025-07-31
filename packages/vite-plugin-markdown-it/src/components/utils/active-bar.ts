@@ -82,8 +82,8 @@ export function useActiveSidebarLinks(
       const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor, containerEl);
       if (isActive) {
         history.replaceState(
-          null,
-          document.title,
+          { ...history.state },
+          document.title || '',
           hash ? (hash as string) : ' ',
         );
         activateLink(hash as string);
