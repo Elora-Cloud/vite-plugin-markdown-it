@@ -1,6 +1,6 @@
-### [v1.0.25](https://github.com/Elora-Cloud/vite-plugin-markdown-it/compare/v1.0.7...v1.0.25)
+### [v1.0.26](https://github.com/Elora-Cloud/vite-plugin-markdown-it/compare/v1.0.7...v1.0.26)
 
-`2025-07-04`
+`2025-07-31`
 
 **release**
 
@@ -18,6 +18,7 @@
 - vite-plugin-markdown-it: 1.0.22 [8aa37db7](https://github.com/Elora-Cloud/vite-plugin-markdown-it/commit/8aa37db757637bce111349417b6b8241d51c427a)
 - vite-plugin-markdown-it: 1.0.23 [c8e050be](https://github.com/Elora-Cloud/vite-plugin-markdown-it/commit/c8e050be6699413371bf026d90f9d25ce55d56d2)
 - vite-plugin-markdown-it: 1.0.24 [1770957a](https://github.com/Elora-Cloud/vite-plugin-markdown-it/commit/1770957a33c15fe07b68d213491fce5975a84c7e)
+- vite-plugin-markdown-it: 1.0.25 [c709ec63](https://github.com/Elora-Cloud/vite-plugin-markdown-it/commit/c709ec6312c8b1a6bc121925a7fab2ef2038ef10)
 - vite-plugin-markdown-it: 1.0.9 [066811d5](https://github.com/Elora-Cloud/vite-plugin-markdown-it/commit/066811d5b46b6b8638f771a866cf8b02cdb0206a)
 ### [v1.0.7](https://github.com/Elora-Cloud/vite-plugin-markdown-it/compare/v1.0.6...v1.0.7)
 
