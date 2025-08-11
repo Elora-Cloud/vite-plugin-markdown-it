@@ -1,5 +1,6 @@
+import typescript from '@rollup/plugin-typescript';
 import { defineConfig } from 'rollup';
-import typescript2 from 'rollup-plugin-typescript2';
+import dts from 'unplugin-dts/rollup';
 
 export default defineConfig([
   {
@@ -21,13 +22,12 @@ export default defineConfig([
       },
     ],
     plugins: [
-      typescript2({
-        tsconfigOverride: {
-          compilerOptions: {
-            declaration: true,
-          },
-        },
-        tsconfig: 'tsconfig.core.json',
+      typescript({
+        tsconfig: './tsconfig.core.json',
+      }),
+      dts({
+        tsconfigPath: './tsconfig.core.json',
+        outDirs: ['dist/core/es', 'dist/core/lib'],
       }),
     ],
   },

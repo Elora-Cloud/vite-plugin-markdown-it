@@ -49,7 +49,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/],
     }),
-    dts(),
+    dts({ processor: 'vue' }),
     Inspect(),
     AutoImport({
       imports: ['vue', '@vueuse/core', 'vue-router'],

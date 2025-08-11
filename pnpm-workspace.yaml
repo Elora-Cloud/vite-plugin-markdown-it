@@ -1,26 +1,26 @@
 packages:
   - packages/*
 catalog:
-  '@element-plus/icons-vue': ^2.3.1
+  '@element-plus/icons-vue': ^2.3.2
   '@elora-cloud/elora-cli': ^1.0.15
-  '@elora-cloud/eslint-config': ^4.16.2
+  '@elora-cloud/eslint-config': ^5.1.0
   '@mistjs/tsconfig-vue': ^1.1.2
   '@pnpm/types': ^1000.7.0
   '@rollup/plugin-typescript': ^12.1.4
   '@types/markdown-it': ^14.1.2
   '@types/markdown-it-container': ^2.0.10
   '@types/markdown-it-emoji': ^3.0.1
-  '@types/node': ^24.1.0
+  '@types/node': ^24.2.1
   '@types/uniqid': ^5.3.4
   '@vitejs/plugin-vue': ^6.0.1
-  '@vue/language-core': ^3.0.4
+  '@vue/language-core': ^3.0.5
   '@vueuse/core': ^13.6.0
   changelogen: ^0.6.2
-  element-plus: ^2.10.4
-  eslint: ^9.32.0
+  element-plus: ^2.10.6
+  eslint: ^9.33.0
   highlight.js: ^11.11.1
   husky: ^9.1.7
-  lint-staged: ^16.1.2
+  lint-staged: ^16.1.5
   markdown-it: ^14.1.0
   markdown-it-anchor: ^9.2.0
   markdown-it-class: ^1.0.0
@@ -29,22 +29,21 @@ catalog:
   markdown-it-toc-done-right: ^4.2.0
   rimraf: ^6.0.1
   rollup: ^4.46.2
-  rollup-plugin-typescript2: ^0.36.0
-  sass: ^1.89.2
-  stylelint: ^16.23.0
+  sass: ^1.90.0
+  stylelint: ^16.23.1
   stylelint-config-recommended: ^17.0.0
   stylelint-config-recommended-vue: ^1.6.1
   stylelint-config-standard: ^39.0.0
   stylelint-config-standard-scss: ^15.0.1
   typescript: ^5.8.3
   uniqid: ^5.4.0
-  unplugin-auto-import: ^19.3.0
+  unplugin-auto-import: ^20.0.0
   unplugin-dts: 1.0.0-beta.6
   unplugin-icons: ^22.2.0
-  unplugin-vue-components: ^28.8.0
-  vite: ^7.0.6
+  unplugin-vue-components: ^29.0.0
+  vite: ^7.1.1
   vite-plugin-inspect: ^11.3.2
   vitest: ^3.2.4
   vue: ^3.5.18
   vue-router: ^4.5.1
-  vue-tsc: ^3.0.4
+  vue-tsc: ^3.0.5
