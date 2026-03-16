@@ -10,13 +10,11 @@ export default elora({
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'style/semi': ['error', 'always'],
-    'vue/operator-linebreak': ['error', 'before'],
     'vue/multi-word-component-names': 0,
-    'vue/valid-v-model': 1,
     'vue/no-mutating-props': 0,
-    'vue/no-v-for-template-key-on-child': 1,
     'vue/no-unused-vars': 0,
-    'vue/object-curly-spacing': ['error', 'always'],
+    'markdown/fenced-code-language': 0,
+    'pnpm/yaml-enforce-settings': 0,
   },
   languageOptions: {
     globals: {

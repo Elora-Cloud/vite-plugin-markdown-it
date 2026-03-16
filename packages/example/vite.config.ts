@@ -41,11 +41,14 @@ export default defineConfig({
     }),
     components({
       dts: 'types/components.d.ts',
-      resolvers: [ElementPlusResolver({
-        importStyle: 'sass',
-      }), IconsResolver({
-        enabledCollections: ['ep'],
-      })],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass',
+        }),
+        IconsResolver({
+          enabledCollections: ['ep'],
+        }),
+      ],
       deep: true,
     }),
   ],

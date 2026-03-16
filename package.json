@@ -2,7 +2,7 @@
   "name": "@elora-cloud/vite-plugin-markdown-it-monorepo",
   "type": "module",
   "version": "1.0.8",
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.32.1",
   "description": "vite-plugin-markdown-it-monorepo",
   "author": "Mumulx",
   "license": "ISC",
@@ -24,7 +24,8 @@
     "example:dev": "pnpm --filter=vite-plugin-markdown-it-example dev",
     "test": "pnpm --filter=vite-plugin-markdown-it test",
     "typecheck": "pnpm --filter=vite-plugin-markdown-it typecheck",
-    "build": "pnpm --filter=vite-plugin-markdown-it build"
+    "build": "pnpm --filter=vite-plugin-markdown-it build",
+    "publish": "pnpm --filter=vite-plugin-markdown-it publish"
   },
   "devDependencies": {
     "@elora-cloud/elora-cli": "catalog:",

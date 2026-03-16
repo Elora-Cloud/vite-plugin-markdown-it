@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.27",
   "private": false,
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.32.1",
   "description": "this is base vite parser markdown for markdown-it",
   "author": "Mumulx",
   "license": "Apache-2.0",
@@ -15,14 +15,14 @@
   "keywords": [],
   "exports": {
     ".": {
-      "types": "./dist/core/es/core/index.d.ts",
-      "import": "./dist/core/es/core/index.mjs",
-      "require": "./dist/core/lib/core/index.cjs"
+      "types": "./dist/core/index.d.mts",
+      "import": "./dist/core/index.mjs",
+      "require": "./dist/core/index.cjs"
     },
     "./core": {
-      "types": "./dist/core/es/core/index.d.ts",
-      "import": "./dist/core/es/core/index.mjs",
-      "require": "./dist/core/lib/core/index.cjs"
+      "types": "./dist/core/index.d.mts",
+      "import": "./dist/core/index.mjs",
+      "require": "./dist/core/index.cjs"
     },
     "./components": {
       "types": "./dist/components/es/index.d.ts",
@@ -43,9 +43,9 @@
     },
     "./*": "./*"
   },
-  "main": "dist/core/lib/core/index.cjs",
-  "module": "dist/core/es/core/index.mjs",
-  "types": "dist/core/es/core/index.d.ts",
+  "main": "dist/core/index.cjs",
+  "module": "dist/core/index.mjs",
+  "types": "dist/core/index.d.mts",
   "files": [
     "CHANGELOG.md",
     "LICENSE",
@@ -65,8 +65,9 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "changelog": "elora changelog",
     "release": "elora release --registry https://npm.pkg.github.com",
+    "publish": "pnpm publish --registry https://npm.pkg.github.com",
     "build": "rimraf -rf /dist && pnpm run build:core && pnpm run build:components && pnpm run build:bundle && pnpm run clean:css",
-    "build:core": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build:core": "tsdown",
     "build:components": "rimraf -rf /dist/components && vite build",
     "build:bundle": "rimraf -rf /dist/components/dist && vite build --config vite.config.bundle.ts"
   },
@@ -89,9 +90,9 @@
   },
   "devDependencies": {
     "@elora-cloud/elora-cli": "catalog:",
-    "@mistjs/tsconfig-vue": "catalog:",
+    "@elora-cloud/unplugin-dts": "catalog:",
+    "@microsoft/api-extractor": "catalog:",
     "@pnpm/types": "catalog:",
-    "@rollup/plugin-typescript": "catalog:",
     "@types/markdown-it": "catalog:",
     "@types/markdown-it-container": "catalog:",
     "@types/markdown-it-emoji": "catalog:",
@@ -99,13 +100,11 @@
     "@types/uniqid": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vue/language-core": "catalog:",
-    "changelogen": "catalog:",
     "rimraf": "catalog:",
-    "rollup": "catalog:",
     "sass": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "unplugin-auto-import": "catalog:",
-    "unplugin-dts": "catalog:",
     "unplugin-icons": "catalog:",
     "unplugin-vue-components": "catalog:",
     "vite": "catalog:",

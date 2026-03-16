@@ -7,7 +7,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import Inspect from 'vite-plugin-inspect';
-import { generateExternal } from './scripts/rollup';
+import { generateExternal } from './scripts/rolldown';
 
 export default defineConfig({
   plugins: [
@@ -43,7 +43,7 @@ export default defineConfig({
     outDir: 'dist/components/dist',
     emptyOutDir: false,
     minify: true,
-    rollupOptions: {
+    rolldownOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: generateExternal(),
       output: {

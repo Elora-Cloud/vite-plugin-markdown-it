@@ -35,11 +35,9 @@
     "highlight.js": "catalog:"
   },
   "devDependencies": {
-    "@mistjs/tsconfig-vue": "catalog:",
     "@types/node": "catalog:",
     "@types/uniqid": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
-    "changelogen": "catalog:",
     "eslint": "catalog:",
     "rimraf": "catalog:",
     "sass": "catalog:",
