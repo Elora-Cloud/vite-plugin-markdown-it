@@ -38,7 +38,7 @@ export default defineConfig({
         {
           format: 'cjs',
           dir: 'dist/components/lib',
-          entryFileNames: '[name].js',
+          entryFileNames: '[name].cjs',
           preserveModules: true,
           preserveModulesRoot: 'src/components',
         },
@@ -49,7 +49,16 @@ export default defineConfig({
     vue({
       include: [/\.vue$/],
     }),
-    dts({ processor: 'vue' }),
+    dts({
+      processor: 'vue',
+      outDirs: [
+        { dir: 'dist/components/lib', moduleFormat: 'cjs' }, // .d.cts
+        { dir: 'dist/components/es', moduleFormat: 'esm' }, // .d.mts
+      ],
+      compilerOptions: {
+        rootDir: 'src/components',
+      },
+    }),
     Inspect(),
     AutoImport({
       imports: ['vue', '@vueuse/core', 'vue-router'],

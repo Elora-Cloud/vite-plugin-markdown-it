@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import dts from '@elora-cloud/unplugin-dts/vite';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 
@@ -32,6 +33,10 @@ export default defineConfig({
         enabledCollections: ['ep'],
       })],
       deep: true,
+    }),
+    dts({
+      bundleTypes: true,
+      processor: 'vue',
     }),
   ],
   resolve: {

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.28",
   "private": false,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "description": "this is base vite parser markdown for markdown-it",
   "author": "Mumulx",
   "license": "Apache-2.0",
@@ -25,21 +25,21 @@
       "require": "./dist/core/index.cjs"
     },
     "./components": {
-      "types": "./dist/components/es/index.d.ts",
+      "types": "./dist/components/es/index.d.mts",
       "import": "./dist/components/es/index.mjs",
-      "require": "./dist/components/lib/index.js"
+      "require": "./dist/components/lib/index.cjs"
     },
     "./components/es/*": {
       "types": [
-        "./dist/components/es/**.d.ts"
+        "./dist/components/es/**.d.mts"
       ],
       "import": "./dist/components/es/*.mjs"
     },
     "./components/lib/*": {
       "types": [
-        "./dist/components/es/**.d.ts"
+        "./dist/components/es/**.d.cts"
       ],
-      "require": "./dist/components/lib/*.js"
+      "require": "./dist/components/lib/*.cjs"
     },
     "./*": "./*"
   },
