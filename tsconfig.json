@@ -7,7 +7,6 @@
     "jsxFactory": "h", // 当使用经典的JSX运行时编译JSX元素时，更改.js文件中调用的函数，默认：React.createElement 。
     "jsxFragmentFactory": "Fragment", // 是否生成相应的Map映射的文件，默认：false。
     "lib": ["dom", "esnext"], // 是否通过为所有导入模块创建命名空间对象
-    "baseUrl": ".", // 目标语言的版本
     "module": "ESNext", // 生成代码的模板标准
     "moduleResolution": "bundler", // 是否检查未使用的参数，默认：false。
 
